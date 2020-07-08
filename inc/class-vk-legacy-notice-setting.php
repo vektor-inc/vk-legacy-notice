@@ -73,7 +73,7 @@ class VK_Legacy_Notice_Setting {
 
 				if ( ! empty( $legacy_posts ) ) {
 
-					echo '<p class="legacy-notice">' . esc_html__( 'Legacy template (' . $post_template['template'] . ') is using', 'vk-legacy-notice' ) . '</p>';
+					echo '<p class="legacy-notice">' . esc_html__( 'Legacy template', 'vk-legacy-notice' ) . ' ( ' . esc_html( $post_template['template'] ) . ' ) ' . esc_html__( 'is used', 'vk-legacy-notice' ) . '</p>';
 					echo '<p class="legacy-notice">' . esc_html( $post_template['alternative'] ) . '</p>';
 					echo '<ul>';
 					foreach ( $legacy_posts as $legacy_post ) {
@@ -82,7 +82,7 @@ class VK_Legacy_Notice_Setting {
 						$legacy_post_list .= ' <a href="' . esc_url( get_edit_post_link( $legacy_post->ID ) ) . '">';
 						$legacy_post_list .= esc_html( $legacy_post->post_title );
 						$legacy_post_list .= '</a> ';
-						$legacy_post_list .= esc_html__( 'is used legacy template (' . $post_template['template'] . ').', 'vk-legacy-notice' );
+						$legacy_post_list .= esc_html__( 'is used legacy template', 'vk-legacy-notice' ) . ' ( ' . esc_html( $post_template['template'] ) . ' ).';
 						$legacy_post_list .= '</li>';
 						echo wp_kses_post( $legacy_post_list );
 					}
