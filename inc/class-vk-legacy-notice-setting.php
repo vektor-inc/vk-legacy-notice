@@ -15,7 +15,6 @@ class VK_Legacy_Notice_Setting {
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( __CLASS__, 'add_admin_menu' ), 10, 2 );
-		add_action( 'admin_init', array( __CLASS__, 'admin_init' ), 10, 2 );
 	}
 
 	/**
@@ -34,22 +33,17 @@ class VK_Legacy_Notice_Setting {
 	 * Setting Page
 	 */
 	public static function setting_page() {
-		$explain_text  = '<p class="vk-legacy-notice-paragraph">' . __( 'This plugin can chack old Setting after this sentense', 'vk-legacy-notice' ) . '</p>';
-		$explain_text .= '<ul class="vk-legacy-notice-list">';
-		$explain_text .= '<li>' . __( 'You use legacy functions, isn\'t it?', 'vk-legacy-notice' ) . '</li>';
-		$explain_text .= '<li>' . __( 'You use legacy files, isn\'t it?', 'vk-legacy-notice' ) . '</li>';
-		$explain_text .= '<li>' . __( 'You use legacy options, isn\'t it?', 'vk-legacy-notice' ) . '</li>';
-		$explain_text .= '</ul>';
-		$explain_text .= '<a href="?vk-legacy-notice">' . __( 'Check legacies now!', 'vk-legacy-notice' ) . '</a>';
+		if ( ! isset( $_GET['check'] ) ) {
+			$explain_text  = '<p class="vk-legacy-notice-paragraph">' . __( 'This plugin can chack old Setting after this sentense', 'vk-legacy-notice' ) . '</p>';
+			$explain_text .= '<ul class="vk-legacy-notice-list">';
+			$explain_text .= '<li>' . __( 'You use legacy functions, isn\'t it?', 'vk-legacy-notice' ) . '</li>';
+			$explain_text .= '<li>' . __( 'You use legacy files, isn\'t it?', 'vk-legacy-notice' ) . '</li>';
+			$explain_text .= '<li>' . __( 'You use legacy options, isn\'t it?', 'vk-legacy-notice' ) . '</li>';
+			$explain_text .= '</ul>';
+			$explain_text .= '<a href="'.admin_url().'?page=vk-legacy-notice-setting&check=result" class="button button-primary">' . __( 'Check legacies now!', 'vk-legacy-notice' ) . '</a>';
 
-		echo wp_kses_post( $explain_text );
-	}
-
-	/**
-	 * Admin init
-	 */
-	public static function admin_init() {
-		if ( isset( $_GET['vk-legacy-notice'] ) ) {
+			echo wp_kses_post( $explain_text );
+		} else if (  isset( $_GET['check'] ) && $_GET['check'] === "result" ) {
 			$args = array(
 				'post_type'  => 'any',
 				'meta_key'   => '_wp_page_template',
@@ -75,8 +69,8 @@ class VK_Legacy_Notice_Setting {
 				echo '</ul>';
 			}
 		}
-	}
 
+	}
 
 }
 new VK_Legacy_Notice_Setting();
