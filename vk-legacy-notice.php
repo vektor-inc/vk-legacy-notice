@@ -6,12 +6,20 @@
  * Version: 0.0.1
  * Author:  Vektor,Inc.
  * Author URI: https://lightning.nagoya/
- * Text Domain: vk-regacy-notice
+ * Text Domain: vk-legacy-notice
  * Domain Path: /languages
  * License: GPL 2.0 or Later
  *
  * @package VK Legacy Notice
  */
 
-defined( 'ABSPATH' ) || exit;
-require_once plugin_dir_path( __FILE__ ) . 'inc/class-vk-legacy-notice-setting.php';
+ defined( 'ABSPATH' ) || exit;
+
+global $plugin_version;
+$plugin_data    = get_file_data( __FILE__, array( 'version' => 'Version' ) );
+$plugin_version = $plugin_data['version'];
+
+load_plugin_textdomain( 'vk-legacy-notice', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+require_once plugin_dir_path( __FILE__ ) . 'inc/vk-admin/vk-admin-config.php';
+require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/vk-legacy-notice-config.php';
+
