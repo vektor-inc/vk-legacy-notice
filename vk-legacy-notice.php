@@ -23,3 +23,13 @@ load_plugin_textdomain( 'vk-legacy-notice', false, dirname( plugin_basename( __F
 require_once plugin_dir_path( __FILE__ ) . 'inc/vk-admin/vk-admin-config.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/vk-legacy-notice-config.php';
 
+/**
+ * Updater
+ */
+require dirname( __FILE__ ) . '/inc/plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/vektor-inc/vk-legacy-notice',
+	__FILE__,
+	'vk-legacy-notice'
+);
+
