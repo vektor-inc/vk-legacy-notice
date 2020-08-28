@@ -84,7 +84,7 @@ class VK_Legacy_Notice {
 					foreach ( $legacy_posts as $legacy_post ) {
 						$legacy_post_list  = '<li>';
 						$legacy_post_list .= get_post_type_object( $legacy_post->post_type )->labels->singular_name;
-						$legacy_post_list .= ' <a href="' . esc_url( get_edit_post_link( $legacy_post->ID ) ) . '">';
+						$legacy_post_list .= ' <a href="' . esc_url( get_edit_post_link( $legacy_post->ID ) ) . '" target="_blank">';
 						$legacy_post_list .= esc_html( $legacy_post->post_title );
 						$legacy_post_list .= '</a> ';
 						$legacy_post_list .= '</li>';
