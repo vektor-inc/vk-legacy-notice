@@ -72,6 +72,7 @@ class VK_Legacy_Notice {
 
 				$args = array(
 					'post_type'  => 'any',
+					'posts_per_page' => -1,
 					'meta_key'   => '_wp_page_template',
 					'meta_value' => $post_template['template'],
 				);
