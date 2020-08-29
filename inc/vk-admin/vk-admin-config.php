@@ -17,7 +17,7 @@ Vk_Admin::admin_scripts( $admin_pages );
  * Setting Page
  */
 function vk_legacy_notice_add_custom_setting_page() {
-	$get_page_title = __( 'VK Legacy Notice Main Setting', 'vk-legacy-notice' );
+	$get_page_title = __( 'VK Legacy Notice', 'vk-legacy-notice' );
 	$get_logo_html  = '';
 	$get_menu_html  = '<li><a href="#check-legacy-setting">' . __( 'Check Legacy Setting', 'vk-legacy-notice' ) . '</a></li>';
 
