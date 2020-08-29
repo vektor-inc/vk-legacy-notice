@@ -61,14 +61,14 @@ class VK_Legacy_Notice {
 					'template'    => 'page-lp.php',
 					'alternative' => $description_change_template . __( '<li>Lightning デザイン設定 > ページヘッダーとパンくずリスト を「表示しない」にチェック</li>', 'vk-legacy-notice' ).$description_change_to_gutenberg.'</ol>',
 				),
-				array(
-					'template'    => 'single.php',
-					'alternative' => __( 'Delete single.php or Rename single.php as single-{ post type }.php.', 'vk-legacy-notice' ),
-				),
-				array(
-					'template'    => 'page.php',
-					'alternative' => __( 'Delete page.php.' ),
-				),
+				// array(
+				// 	'template'    => 'single.php',
+				// 	'alternative' => __( 'Delete single.php or Rename single.php as single-{ post type }.php.', 'vk-legacy-notice' ),
+				// ),
+				// array(
+				// 	'template'    => 'page.php',
+				// 	'alternative' => __( 'Delete page.php.' ),
+				// ),
 			);
 
 			foreach ( $post_templates as $post_template ) {
@@ -92,7 +92,7 @@ class VK_Legacy_Notice {
 					foreach ( $legacy_posts as $legacy_post ) {
 						$legacy_post_list  = '<li>';
 						$legacy_post_list .= get_post_type_object( $legacy_post->post_type )->labels->singular_name;
-						$legacy_post_list .= ' <a href="' . esc_url( get_edit_post_link( $legacy_post->ID ) ) . '" target="_blank">';
+						$legacy_post_list .= ' : <a href="' . esc_url( get_edit_post_link( $legacy_post->ID ) ) . '" target="_blank">';
 						$legacy_post_list .= esc_html( $legacy_post->post_title );
 						$legacy_post_list .= '</a> ';
 						$legacy_post_list .= '</li>';
