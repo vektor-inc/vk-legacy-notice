@@ -41,22 +41,25 @@ class VK_Legacy_Notice {
 		echo '<h3 id="check-legacy-setting">' . esc_html__( 'Check Legacy Setting', 'vk-legacy-notice' ) . '</h3>';
 
 		if ( isset( $_GET['check'] ) && 'result' === $_GET['check'] ) {
-			echo '<table class="form-table">';
+			// echo '<table class="form-table">';
 
 			$perfect = true;
 
+			$description_change_template = __('<ol><li>記事の編集画面に移動</li><li>ページ属性 > テンプレート を「デフォルトテンプレート」に変更</li><li>Lightning デザイン設定 > レイアウト設定 を「1カラム（サブセクション無し）」に変更</li>', 'vk-legacy-notice');
+			$description_change_to_gutenberg = __('<li>ウィジェットやビルダーブラグインではなくブロックエディタでページを構成してください。</li>', 'vk-legacy-notice');
+			
 			$post_templates = array(
 				array(
 					'template'    => 'page-onecolumn.php',
-					'alternative' => __( 'Change Lightning Design Setting > Layout Setting to 1 column or 1 column ( no subsection ).', 'vk-legacy-notice' ),
+					'alternative' => $description_change_template.'</ol>',
 				),
 				array(
 					'template'    => 'page-lp-builder.php',
-					'alternative' => __( 'Change Lightning Design Setting > Layout Setting to 1 column ( no subsection ) and fill checkbox that Page Header and Breadcrumb Don\'t display.', 'vk-legacy-notice' ),
+					'alternative' => $description_change_template . __( '<li>Lightning デザイン設定 > ページヘッダーとパンくずリスト を「表示しない」にチェック</li>', 'vk-legacy-notice' ).$description_change_to_gutenberg.'</ol>',
 				),
 				array(
 					'template'    => 'page-lp.php',
-					'alternative' => __( 'Change Lightning Design Setting > Layout Setting to 1 column ( no subsection ) and fill checkbox that Page Header and Breadcrumb Don\'t display.', 'vk-legacy-notice' ),
+					'alternative' => $description_change_template . __( '<li>Lightning デザイン設定 > ページヘッダーとパンくずリスト を「表示しない」にチェック</li>', 'vk-legacy-notice' ).$description_change_to_gutenberg.'</ol>',
 				),
 				array(
 					'template'    => 'single.php',
@@ -79,9 +82,13 @@ class VK_Legacy_Notice {
 
 				$legacy_posts = get_posts( $args );
 				if ( ! empty( $legacy_posts ) ) {
-					echo '<tr><th>' . esc_html__( 'Legacy template', 'vk-legacy-notice' ) . ' ( ' . esc_html( $post_template['template'] ) . ' ) ' . esc_html__( 'is used', 'vk-legacy-notice' ) . '</th></tr>';
-					echo '<tr><td>' . esc_html( $post_template['alternative'] ) . '</td></tr>';
-					echo '<tr><td><ul>';
+					echo '<div class="adminMain_main_content">';
+					echo '<h4 class="alert alert-danger">' . esc_html__( 'Legacy template', 'vk-legacy-notice' ) . ' ( ' . esc_html( $post_template['template'] ) . ' ) ' . esc_html__( 'is used', 'vk-legacy-notice' ) . '</h4>';
+					echo '<h5>' . __('対応方法', 'vk-legacy-notice' ) . '</h5>';
+					
+					echo wp_kses_post( $post_template['alternative'] );
+					echo '<h5>' . __('対象箇所', 'vk-legacy-notice' ) . '</h5>';
+					echo '<ul>';
 					foreach ( $legacy_posts as $legacy_post ) {
 						$legacy_post_list  = '<li>';
 						$legacy_post_list .= get_post_type_object( $legacy_post->post_type )->labels->singular_name;
@@ -91,14 +98,15 @@ class VK_Legacy_Notice {
 						$legacy_post_list .= '</li>';
 						echo wp_kses_post( $legacy_post_list );
 					}
-					echo '</ul></td></tr>';
+					echo '</ul>';
+					echo '</div>';
 					$perfect = false;
 				}
 			}
 			if ( true === $perfect ) {
-				echo '<tr><td>' . esc_html__( 'Congratulations! There is no legacy setting.', 'vk-legacy-notice' ) . '</td></tr>';
+				echo '<p>' . esc_html__( 'Congratulations! There is no legacy setting.', 'vk-legacy-notice' ) . '</p>';
 			}
-			echo '</table>';
+			// echo '</table>';
 			echo '<a href="' . admin_url() . 'options-general.php?page=vk-legacy-notice" class="button button-primary">' . __( 'Back to check page', 'vk-legacy-notice' ) . '</a>';
 		} else {
 			$explain_text  = '<table class="form-table">';
