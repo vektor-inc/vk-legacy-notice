@@ -41,54 +41,67 @@ class VK_Legacy_Notice {
 		echo '<h3 id="check-legacy-setting">' . esc_html__( 'Check Legacy Setting', 'vk-legacy-notice' ) . '</h3>';
 
 		if ( isset( $_GET['check'] ) && 'result' === $_GET['check'] ) {
-			// echo '<table class="form-table">';
 
 			$perfect = true;
 
-			$description_change_template = __('<ol><li>記事の編集画面に移動</li><li>ページ属性 > テンプレート を「デフォルトテンプレート」に変更</li><li>Lightning デザイン設定 > レイアウト設定 を「1カラム（サブセクション無し）」に変更</li>', 'vk-legacy-notice');
-			$description_change_to_gutenberg = __('<li>ウィジェットやビルダーブラグインではなくブロックエディタでページを構成してください。</li>', 'vk-legacy-notice');
-			
+			$legacy_description = '';
+
+			$description_change_template  = '<ol>';
+			$description_change_template .= '<li>' . __( '記事の編集画面に移動', 'vk-legacy-notice' ) . '</li>';
+			$description_change_template .= '<li>' . __( 'ページ属性 > テンプレート を「デフォルトテンプレート」に変更', 'vk-legacy-notice' ) . '</li>';
+			$description_change_template .= '<li>' . __( 'Lightning デザイン設定 > レイアウト設定 を「1カラム（サブセクション無し）」に変更', 'vk-legacy-notice' ) . '</li>';
+			$description_change_template  = '</ol>';
+
+			$description_for_lp = '<li>' . __( 'Lightning デザイン設定 > ページヘッダーとパンくずリスト を「表示しない」にチェック', 'vk-legacy-notice' ) . '</li>';
+
+			$description_change_to_gutenberg = '<li>' . __( 'ウィジェットやビルダーブラグインではなくブロックエディタでページを構成してください。', 'vk-legacy-notice' ) . '</li>';
+
 			$post_templates = array(
 				array(
 					'template'    => 'page-onecolumn.php',
-					'alternative' => $description_change_template.'</ol>',
+					'alternative' => $description_change_template . '</ol>',
 				),
 				array(
 					'template'    => 'page-lp-builder.php',
-					'alternative' => $description_change_template . __( '<li>Lightning デザイン設定 > ページヘッダーとパンくずリスト を「表示しない」にチェック</li>', 'vk-legacy-notice' ).$description_change_to_gutenberg.'</ol>',
+					'alternative' => $description_change_template . $description_for_lp . $description_change_to_gutenberg . '</ol>',
 				),
 				array(
 					'template'    => 'page-lp.php',
-					'alternative' => $description_change_template . __( '<li>Lightning デザイン設定 > ページヘッダーとパンくずリスト を「表示しない」にチェック</li>', 'vk-legacy-notice' ).$description_change_to_gutenberg.'</ol>',
+					'alternative' => $description_change_template . $description_for_lp . $description_change_to_gutenberg . '</ol>',
 				),
-				// array(
-				// 	'template'    => 'single.php',
-				// 	'alternative' => __( 'Delete single.php or Rename single.php as single-{ post type }.php.', 'vk-legacy-notice' ),
-				// ),
-				// array(
-				// 	'template'    => 'page.php',
-				// 	'alternative' => __( 'Delete page.php.' ),
-				// ),
+
+				/*
+				Is it need under?
+				array(
+					'template'    => 'single.php',
+					'alternative' => __( 'Delete single.php or Rename single.php as single-{ post type }.php.', 'vk-legacy-notice' ),
+				),
+				array(
+					'template'    => 'page.php',
+					'alternative' => __( 'Delete page.php.' ),
+				),
+				*/
 			);
 
 			foreach ( $post_templates as $post_template ) {
 
 				$args = array(
-					'post_type'  => 'any',
+					'post_type'      => 'any',
 					'posts_per_page' => -1,
-					'meta_key'   => '_wp_page_template',
-					'meta_value' => $post_template['template'],
+					'meta_key'       => '_wp_page_template',
+					'meta_value'     => $post_template['template'],
 				);
 
 				$legacy_posts = get_posts( $args );
 				if ( ! empty( $legacy_posts ) ) {
-					echo '<div class="adminMain_main_content">';
-					echo '<h4 class="alert alert-danger">' . esc_html__( 'Legacy template', 'vk-legacy-notice' ) . ' ( ' . esc_html( $post_template['template'] ) . ' ) ' . esc_html__( 'is used', 'vk-legacy-notice' ) . '</h4>';
-					echo '<h5>' . __('対応方法', 'vk-legacy-notice' ) . '</h5>';
-					
-					echo wp_kses_post( $post_template['alternative'] );
-					echo '<h5>' . __('対象箇所', 'vk-legacy-notice' ) . '</h5>';
-					echo '<ul>';
+					$legacy_description .= '<div class="adminMain_main_content">';
+					// translators: Legacy template ( template for page ) is used.
+					$legacy_description .= '<h4 class="alert alert-danger">' . sprintf( __( 'Legacy template ( %s ) is used.', 'vk-legacy-notice' ), $post_template['template'] ) . '</h4>';
+					$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
+
+					$legacy_description .= $post_template['alternative'];
+					$legacy_description .= '<h5>' . __( '対象箇所', 'vk-legacy-notice' ) . '</h5>';
+					$legacy_description .= '<ul>';
 					foreach ( $legacy_posts as $legacy_post ) {
 						$legacy_post_list  = '<li>';
 						$legacy_post_list .= get_post_type_object( $legacy_post->post_type )->labels->singular_name;
@@ -96,18 +109,121 @@ class VK_Legacy_Notice {
 						$legacy_post_list .= esc_html( $legacy_post->post_title );
 						$legacy_post_list .= '</a> ';
 						$legacy_post_list .= '</li>';
-						echo wp_kses_post( $legacy_post_list );
+
+						$legacy_description .= $legacy_post_list;
 					}
-					echo '</ul>';
-					echo '</div>';
+					$legacy_description .= '</ul>';
+					$legacy_description .= '</div>';
+
 					$perfect = false;
 				}
 			}
+
+			// Lightning 関連.
+			if ( function_exists( 'lightning_get_theme_name' ) ) {
+
+				// Lightning Advanced Slider が有効な場合.
+				if ( function_exists( 'las_plugin_active' ) ) {
+					$legacy_description .= '<div class="adminMain_main_content">';
+					$legacy_description .= '<h4 class="alert alert-danger">' . __( '「Lightning Advanced Slider」が有効化されています。', 'vk-legacy-notice' ) . '</h4>';
+					$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
+					$legacy_description .= '<ul>';
+					$legacy_description .= '<li>' . __( 'Bootsrap 4 ベースのスキンをご利用の場合、標準で「フェード」が使用可能です。', 'vk-legacy-notice' ) . '</li>';
+					$legacy_description .= '<li>' . __( 'VK Blocks Pro ご利用の場合、スライダーブロックを使用することで同等以上のことが可能です。', 'vk-legacy-notice' ) . '</li>';
+					$legacy_description .= '</ul>';
+					$legacy_description .= '</div>';
+
+					$perfect = false;
+				}
+
+				// スキン関連.
+				if ( class_exists( 'Lightning_Design_Manager' ) ) {
+
+					// BS3 版スキンを使用している場合.
+					$skin_info = Lightning_Design_Manager::get_current_skin();
+					if ( 'bs4' !== $skin_info['bootstrap'] ) {
+						$legacy_description .= '<div class="adminMain_main_content">';
+						$legacy_description .= '<h4 class="alert alert-danger">' . __( 'Bootsrap 3 ベースのスキンをご利用中です。', 'vk-legacy-notice' ) . '</h4>';
+						$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
+						$legacy_description .= '<ul>';
+						$legacy_description .= '<li>' . __( 'Bootstrap 4 ベースのスキンをご利用ください。', 'vk-legacy-notice' ) . '</li>';
+						$legacy_description .= '</ul>';
+						$legacy_description .= '</div>';
+
+						$perfect = false;
+					}
+
+					// Fort の明フッターを使用している場合.
+					$current_skin = get_option( 'lightning_design_skin' );
+					if ( 'fort-bs4-footer-light' === $current_skin ) {
+						$legacy_description .= '<div class="adminMain_main_content">';
+						$legacy_description .= '<h4 class="alert alert-danger">' . __( 'Fort のフッターが明るいバージョンをご利用中です。', 'vk-legacy-notice' ) . '</h4>';
+						$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
+						$legacy_description .= '<ul>';
+						$legacy_description .= '<li>' . __( 'フッターカラー変更機能で同等以上のことができます。', 'vk-legacy-notice' ) . '</li>';
+						$legacy_description .= '</ul>';
+						$legacy_description .= '</div>';
+
+						$perfect = false;
+					}
+
+					// Old File Check.
+					$old_file_array = array(
+						'module_loop_post_meta' => array(
+							'file' => 'module_loop_post_meta.php',
+							'path' => 'template-parts/post/',
+							'name' => 'meta.php',
+						),
+						'module_loop_post'      => array(
+							'file' => 'module_loop_post.php',
+							'path' => 'template-parts/post/',
+							'name' => 'loop-post.php',
+						),
+						'module_pageTit'        => array(
+							'file' => 'module_pageTit.php',
+							'path' => 'template-parts/',
+							'name' => 'page-header.php',
+						),
+						'module_panList'        => array(
+							'file' => 'module_panList.php',
+							'path' => 'template-parts/',
+							'name' => 'breadcrumb.php',
+						),
+						'module_slide'          => array(
+							'file' => 'module_slide.php',
+							'path' => 'template-parts/',
+							'name' => 'slide-bs3.php',
+						),
+					);
+					foreach ( $old_file_array as $old_file ) {
+						$old_file_path = get_stylesheet_directory() . $old_file['file'];
+						if ( file_exists( $old_file_path ) ) {
+							$legacy_description .= '<div class="adminMain_main_content">';
+							// translators: ( Leyacy file ) is exists.
+							$legacy_description .= '<h4 class="alert alert-danger">' . sprintf( __( '%s が存在しています。', 'vk-legacy-notice' ), $old_file['file'] ) . '</h4>';
+							$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
+							$legacy_description .= '<ol>';
+							// translators: move the file into (path).
+							$legacy_description .= '<li>' . sprintf( __( 'ファイルを %s ディレクトリ内に移動してください。', 'vk-legacy-notice' ), $old_file['path'] ) . '</li>';
+							// translators: rename the file to (name).
+							$legacy_description .= '<li>' . sprintf( __( 'その後、ファイル名を %s に変更してください。', 'vk-legacy-notice' ), $old_file['name'] ) . '</li>';
+							$legacy_description .= '</li>';
+							$legacy_description .= '</ol>';
+							$legacy_description .= '</div>';
+
+							$perfect = false;
+						}
+					}
+				}
+			}
+
 			if ( true === $perfect ) {
 				echo '<p>' . esc_html__( 'Congratulations! There is no legacy setting.', 'vk-legacy-notice' ) . '</p>';
+			} else {
+				echo wp_kses_post( $legacy_description );
 			}
-			// echo '</table>';
-			echo '<a href="' . admin_url() . 'options-general.php?page=vk-legacy-notice" class="button button-primary">' . __( 'Back to check page', 'vk-legacy-notice' ) . '</a>';
+
+			echo '<a href="' . esc_url( admin_url() ) . 'options-general.php?page=vk-legacy-notice" class="button button-primary">' . esc_html__( 'Back to check page', 'vk-legacy-notice' ) . '</a>';
 		} else {
 			$explain_text  = '<table class="form-table">';
 			$explain_text .= '<tr><th>' . __( 'This plugin can chack old Setting after this sentense', 'vk-legacy-notice' ) . '</th></tr>';
