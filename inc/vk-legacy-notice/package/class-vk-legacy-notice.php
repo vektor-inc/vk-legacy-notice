@@ -166,55 +166,128 @@ class VK_Legacy_Notice {
 
 						$perfect = false;
 					}
+				}
 
-					// Old File Check.
-					$old_file_array = array(
-						'module_loop_post_meta' => array(
-							'file' => 'module_loop_post_meta.php',
-							'path' => 'template-parts/post/',
-							'name' => 'meta.php',
-						),
-						'module_loop_post'      => array(
-							'file' => 'module_loop_post.php',
-							'path' => 'template-parts/post/',
-							'name' => 'loop-post.php',
-						),
-						'module_pageTit'        => array(
-							'file' => 'module_pageTit.php',
-							'path' => 'template-parts/',
-							'name' => 'page-header.php',
-						),
-						'module_panList'        => array(
-							'file' => 'module_panList.php',
-							'path' => 'template-parts/',
-							'name' => 'breadcrumb.php',
-						),
-						'module_slide'          => array(
-							'file' => 'module_slide.php',
-							'path' => 'template-parts/',
-							'name' => 'slide-bs3.php',
-						),
-					);
-					foreach ( $old_file_array as $old_file ) {
-						$old_file_path = get_stylesheet_directory() . $old_file['file'];
-						if ( file_exists( $old_file_path ) ) {
-							$legacy_description .= '<div class="adminMain_main_content">';
-							// translators: ( Leyacy file ) is exists.
-							$legacy_description .= '<h4 class="alert alert-danger">' . sprintf( __( '%s が存在しています。', 'vk-legacy-notice' ), $old_file['file'] ) . '</h4>';
-							$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
-							$legacy_description .= '<ol>';
-							// translators: move the file into (path).
-							$legacy_description .= '<li>' . sprintf( __( 'ファイルを %s ディレクトリ内に移動してください。', 'vk-legacy-notice' ), $old_file['path'] ) . '</li>';
-							// translators: rename the file to (name).
-							$legacy_description .= '<li>' . sprintf( __( 'その後、ファイル名を %s に変更してください。', 'vk-legacy-notice' ), $old_file['name'] ) . '</li>';
-							$legacy_description .= '</li>';
-							$legacy_description .= '</ol>';
-							$legacy_description .= '</div>';
+				// Old File Check.
+				$old_file_array = array(
+					'module_loop_post_meta' => array(
+						'file' => 'module_loop_post_meta.php',
+						'path' => 'template-parts/post/',
+						'name' => 'meta.php',
+					),
+					'module_loop_post'      => array(
+						'file' => 'module_loop_post.php',
+						'path' => 'template-parts/post/',
+						'name' => 'loop-post.php',
+					),
+					'module_pageTit'        => array(
+						'file' => 'module_pageTit.php',
+						'path' => 'template-parts/',
+						'name' => 'page-header.php',
+					),
+					'module_panList'        => array(
+						'file' => 'module_panList.php',
+						'path' => 'template-parts/',
+						'name' => 'breadcrumb.php',
+					),
+					'module_slide'          => array(
+						'file' => 'module_slide.php',
+						'path' => 'template-parts/',
+						'name' => 'slide-bs3.php',
+					),
+				);
+				foreach ( $old_file_array as $old_file => $value ) {
+					$old_file_path = get_stylesheet_directory() . $old_file['file'];
+					if ( file_exists( $old_file_path ) ) {
+						$legacy_description .= '<div class="adminMain_main_content">';
+						// translators: ( Leyacy file ) is exists.
+						$legacy_description .= '<h4 class="alert alert-danger">' . sprintf( __( '%s が存在しています。', 'vk-legacy-notice' ), $old_file['file'] ) . '</h4>';
+						$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
+						$legacy_description .= '<ol>';
+						// translators: move the file into (path).
+						$legacy_description .= '<li>' . sprintf( __( 'ファイルを %s ディレクトリ内に移動してください。', 'vk-legacy-notice' ), $old_file['path'] ) . '</li>';
+						// translators: rename the file to (name).
+						$legacy_description .= '<li>' . sprintf( __( 'その後、ファイル名を %s に変更してください。', 'vk-legacy-notice' ), $old_file['name'] ) . '</li>';
+						$legacy_description .= '</li>';
+						$legacy_description .= '</ol>';
+						$legacy_description .= '</div>';
 
-							$perfect = false;
-						}
+						$perfect = false;
 					}
 				}
+
+				// Old option check.
+				$options = get_option( 'lightning_theme_options' );
+
+				$widget_front_pr_alternative  = __( 'トップページに指定した固定ページ内に下記のいずれかを設置することで同様の表示が可能です。', 'vk-legacy-notice' );
+				$widget_front_pr_alternative .= '<ul>';
+				$widget_front_pr_alternative .= '<li>' . __( 'VK Blocks Pro のアイコンカードブロック', 'vk-legacy-notice' ) . '</li>';
+				$widget_front_pr_alternative .= '<li>' . __( 'VK Blocks の PR Blocks ブロック', 'vk-legacy-notice' ) . '</li>';
+				$widget_front_pr_alternative .= '</ul>';
+
+				$widget_full_wide_title_alternative  = __( '下記を行うこと同様の表示が可能です。', 'vk-legacy-notice' );
+				$widget_full_wide_title_alternative .= '<ol>';
+				$widget_full_wide_title_alternative .= '<li>';
+				$widget_full_wide_title_alternative .= __( '固定ページ内に下記ブロックを全幅で配置。', 'vk-legacy-notice' );
+				$widget_full_wide_title_alternative .= '<ul>';
+				$widget_full_wide_title_alternative .= '<li>' . __( 'カバーブロック', 'vk-legacy-notice' ) . '</li>';
+				$widget_full_wide_title_alternative .= '<li>' . __( 'VK Blocks Pro のアウターブロック', 'vk-legacy-notice' ) . '</li>';
+				$widget_full_wide_title_alternative .= '</ul>';
+				$widget_full_wide_title_alternative .= '</li>';
+				$widget_full_wide_title_alternative .= '<li>';
+				$widget_full_wide_title_alternative .= __( 'その中に VK Blocks の見出しブロックを配置', 'vk-legacy-notice' );
+				$widget_full_wide_title_alternative .= '</li>';
+				$widget_full_wide_title_alternative  = '</ol>';
+
+				$customize_panel = __( '外観 ＞ カスタマイズ > Lightning 機能設定', 'vk-legacy-notice' );
+
+				$check_options = array(
+					'widget_front_pr'        => array(
+						'label'       => __( 'Front Page PR Block', 'vk-legacy-notice' ),
+						'option'      => 'widget_front_pr',
+						'alternative' => $widget_front_pr_alternative,
+						'panel'       => $customize_panel,
+					),
+					'widget_full_wide_title' => array(
+						'label'       => __( 'Full Wide Title Widget', 'vk-legacy-notice' ),
+						'option'      => 'widget_front_pr',
+						'alternative' => $widget_full_wide_title_alternative,
+						'panel'       => $customize_panel,
+					),
+				);
+
+				foreach ( $check_options as $check_option => $value ) {
+					if ( empty( $options['disable_functions'][ $check_option ] ) ) {
+						// translators: %s is old function.
+						$legacy_description .= '<h4 class="alert alert-danger">' . sprintf( __( '%s は古い機能です。', 'vk-legacy-notice' ), $check_option['label'] ) . '</h4>';
+						$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
+						$legacy_description .= '<ol>';
+						$legacy_description .= '<li>' . $check_option['alternative'] . '</li>';
+						// translators: Check disable options.
+						$legacy_description .= '<li>' . sprintf( __( '%1$sから %2$s にチェックを入れてください。', 'vk-legacy-notice' ), $check_option['panel'], $check_option['label'] ) . '</li>';
+						$legacy_description .= '</ol>';
+
+						$perfect = false;
+					}
+				}
+			} // Lightning 関連 END.
+
+			// Font Awesome.
+			$options = Vk_Font_Awesome_Versions::get_option_fa();
+			$prefix  = '';
+			if ( function_exists( 'lightning_get_prefix_customize_panel' ) ) {
+				$prefix = lightning_get_prefix_customize_panel();
+			} elseif ( function_exists( 'katawara_get_prefix_customize_panel' ) ) {
+				$prefix = katawara_get_prefix_customize_panel();
+			}
+			if ( empty( $options ) || ! empty( $options ) && '4.7' === $options ) {
+				$legacy_description .= '<h4 class="alert alert-danger">' . __( 'Font Awesome 4.7 が使われています', 'vk-legacy-notice' ) . '</h4>';
+				$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
+				$legacy_description .= '<ol>';
+				// translators: Theme Prefix.
+				$legacy_description .= '<li>' . sprintf( __( '外観 ＞カスタマイズ > %s Font Awesome と進んでください。', 'vk-legacy-notice' ), $prefix ) . '</li>';
+				$legacy_description .= '<li>' . __( 'その後、Font Awesome バージョン で Font Awesome 5.X を選択してください。', 'vk-legacy-notice' ) . '</li>';
+				$legacy_description .= '</ol>';
 			}
 
 			if ( true === $perfect ) {
