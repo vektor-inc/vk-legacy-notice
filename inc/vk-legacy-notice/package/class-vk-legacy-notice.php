@@ -254,6 +254,7 @@ class VK_Legacy_Notice {
 
 				foreach ( $check_options as $check_option ) {
 					if ( empty( $options['disable_functions'][ $check_option['option'] ] ) ) {
+						$legacy_description .= '<div class="adminMain_main_content">';
 						// translators: %s is old function.
 						$legacy_description .= '<h4 class="alert alert-danger">' . sprintf( __( '%s は古い機能です。', 'vk-legacy-notice' ), $check_option['label'] ) . '</h4>';
 						$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
@@ -262,6 +263,7 @@ class VK_Legacy_Notice {
 						// translators: Check disable options.
 						$legacy_description .= '<li>' . sprintf( __( '%1$sから %2$s にチェックを入れてください。', 'vk-legacy-notice' ), $check_option['panel'], $check_option['label'] ) . '</li>';
 						$legacy_description .= '</ol>';
+						$legacy_description .= '</div>';
 
 						$perfect = false;
 					}
@@ -278,6 +280,7 @@ class VK_Legacy_Notice {
 					$prefix = katawara_get_prefix_customize_panel();
 				}
 				if ( empty( $options ) || ! empty( $options ) && '4.7' === $options ) {
+					$legacy_description .= '<div class="adminMain_main_content">';
 					$legacy_description .= '<h4 class="alert alert-danger">' . __( 'Font Awesome 4.7 が使われています', 'vk-legacy-notice' ) . '</h4>';
 					$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
 					$legacy_description .= '<ol>';
@@ -285,6 +288,7 @@ class VK_Legacy_Notice {
 					$legacy_description .= '<li>' . sprintf( __( '外観 ＞カスタマイズ > %s Font Awesome と進んでください。', 'vk-legacy-notice' ), $prefix ) . '</li>';
 					$legacy_description .= '<li>' . __( 'その後、Font Awesome バージョン で Font Awesome 5.X を選択してください。', 'vk-legacy-notice' ) . '</li>';
 					$legacy_description .= '</ol>';
+					$legacy_description .= '</div>';
 				}
 			}
 
@@ -293,6 +297,7 @@ class VK_Legacy_Notice {
 				$enable_widgets = VEU_Widget_Control::enable_widget_ids();
 				$prefix         = '';
 				if ( in_array( '3pr_area', $enable_widgets, true ) ) {
+					$legacy_description .= '<div class="adminMain_main_content">';
 					$legacy_description .= '<h4 class="alert alert-danger">' . __( 'VK 3PR エリア ウィジェットが使われています。', 'vk-legacy-notice' ) . '</h4>';
 					$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
 					$legacy_description .= '<ol>';
@@ -300,6 +305,7 @@ class VK_Legacy_Notice {
 					$legacy_description .= '<li>' . __( '固定ページ内に VK Blocks Pro のカードブロックを使用する事で同様の表示が可能です。', 'vk-legacy-notice' ) . '</li>';
 					$legacy_description .= '<li>' . __( 'その後、ExUnit > Exunit から VK 3PR エリア ウィジェットを無効化してください。 ', 'vk-legacy-notice' ) . '</li>';
 					$legacy_description .= '</ol>';
+					$legacy_description .= '</div>';
 				}
 			}
 
