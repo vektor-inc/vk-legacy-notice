@@ -52,7 +52,7 @@ class VK_Legacy_Notice {
 
 			$description_for_lp = '<li>' . __( 'Lightning デザイン設定 > ページヘッダーとパンくずリスト を「表示しない」にチェック', 'vk-legacy-notice' ) . '</li>';
 
-			$description_change_to_gutenberg = '<li>' . __( 'ウィジェットやビルダーブラグインではなくブロックエディタでページを構成してください。', 'vk-legacy-notice' ) . '</li>';
+			$description_change_to_gutenberg = '<li>' . __( 'ウィジェットやビルダーブラグインではなく固定ページ内にブロックエディタでページを構成してください。', 'vk-legacy-notice' ) . '</li>';
 
 			$post_templates = array(
 				array(
@@ -303,7 +303,7 @@ class VK_Legacy_Notice {
 					$legacy_description .= '<ol>';
 					// translators: Theme Prefix.
 					$legacy_description .= '<li>' . __( '固定ページ内に VK Blocks Pro のカードブロックを使用する事で同様の表示が可能です。', 'vk-legacy-notice' ) . '</li>';
-					$legacy_description .= '<li>' . __( 'その後、ExUnit > Exunit から VK 3PR エリア ウィジェットを無効化してください。 ', 'vk-legacy-notice' ) . '</li>';
+					$legacy_description .= '<li>' . __( 'その後、ExUnit > ExUnit から VK 3PR エリア ウィジェットを無効化してください。 ', 'vk-legacy-notice' ) . '</li>';
 					$legacy_description .= '</ol>';
 					$legacy_description .= '</div>';
 				}
