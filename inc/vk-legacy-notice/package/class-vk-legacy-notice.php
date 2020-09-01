@@ -138,7 +138,7 @@ class VK_Legacy_Notice {
 
 					// BS3 版スキンを使用している場合.
 					global $bootstrap;
-					if ( '3' !== $bootstrap ) {
+					if ( '3' === $bootstrap ) {
 						$legacy_description .= '<div class="adminMain_main_content">';
 						$legacy_description .= '<h4 class="alert alert-danger">' . __( 'Bootsrap 3 ベースのスキンをご利用中です。', 'vk-legacy-notice' ) . '</h4>';
 						$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
