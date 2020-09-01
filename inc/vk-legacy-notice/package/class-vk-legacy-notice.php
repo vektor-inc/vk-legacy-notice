@@ -194,7 +194,7 @@ class VK_Legacy_Notice {
 					),
 				);
 				foreach ( $old_file_array as $old_file ) {
-					$old_file_path = get_stylesheet_directory() . $old_file['file'];
+					$old_file_path = get_stylesheet_directory() . '/' . $old_file['file'];
 					if ( file_exists( $old_file_path ) ) {
 						$legacy_description .= '<div class="adminMain_main_content">';
 						// translators: ( Leyacy file ) is exists.
