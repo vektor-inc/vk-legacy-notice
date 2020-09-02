@@ -292,6 +292,43 @@ class VK_Legacy_Notice {
 				}
 			}
 
+			// Media Posts.
+			if ( class_exists( 'Lightning_media_posts' ) ) {
+				$enable_widgets = VEU_Widget_Control::enable_widget_ids();
+				$prefix         = lightning_get_prefix_customize_panel();
+				if ( in_array( '3pr_area', $enable_widgets, true ) ) {
+					$legacy_description .= '<div class="adminMain_main_content">';
+					$legacy_description .= '<h4 class="alert alert-danger">' . __( '旧 Media Posts が有効化されています。', 'vk-legacy-notice' ) . '</h4>';
+					$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
+					$legacy_description .= '<ol>';
+					// translators: Theme Prefix.
+					$legacy_description .= '<li>' . sprintf( __( '外観 ＞カスタマイズ > %s 機能設定 と進んでください。', 'vk-legacy-notice' ), $prefix ) . '</li>';
+					$legacy_description .= '<li>' . __( 'その後「Media Posts を停止」にチェックを入れてください。', 'vk-legacy-notice' ) . '</li>';
+					$legacy_description .= '<li>';
+					$legacy_description .= __( '下記のいずれかを使用することで同等のことが可能です。', 'vk-legacy-notice' );
+					$legacy_description .= '<ul>';
+					// translators: Theme Prefix.
+					$legacy_description .= '<li>' . sprintf( __( '外観 ＞カスタマイズ > %s アーカイブ設定', 'vk-legacy-notice' ), $prefix ) . '</li>';
+					$legacy_description .= '<li>' . __( 'Media Posts BS4ウィジェット', 'vk-legacy-notice' ) . '</li>';
+					$legacy_description .= '</ul>';
+					$legacy_description .= '</li>';
+					$legacy_description .= '</ol>';
+					$legacy_description .= '<h5>' . __( '注意事項', 'vk-legacy-notice' ) . '</h5>';
+					$legacy_description .= __( 'これを無効化することで下記ウィジェットエリアが使えなくなります', 'vk-legacy-notice' );
+					$legacy_description .= '<ul>';
+					$legacy_description .= '<li>' . __( 'トップページコンテンツエリア左', 'vk-legacy-notice' ) . '</li>';
+					$legacy_description .= '<li>' . __( 'トップページコンテンツエリア右', 'vk-legacy-notice' ) . '</li>';
+					$legacy_description .= '<li>' . __( 'トップページコンテンツエリア下部', 'vk-legacy-notice' ) . '</li>';
+					$legacy_description .= '</ul>';
+					$legacy_description .= __( 'しかし、下記の方法で代替可能です。', 'vk-legacy-notice' );
+					$legacy_description .= '<ul>';
+					$legacy_description .= '<li>' . __( '固定ページにカラムブロックを配置し、カラム内に投稿リストブロックなどを配置', 'vk-legacy-notice' ) . '</li>';
+					$legacy_description .= '<li>' . __( 'ウィジェットエリアを自作後アクションフックを使って配置', 'vk-legacy-notice' ) . '</li>';
+					$legacy_description .= '</ul>';
+					$legacy_description .= '</div>';
+				}
+			}
+
 			// ExUnit.
 			if ( class_exists( 'VEU_Widget_Control' ) ) {
 				$enable_widgets = VEU_Widget_Control::enable_widget_ids();
