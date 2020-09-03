@@ -1,0 +1,22 @@
+{
+  "name": "vk-legacy-notice",
+  "version": "0.0.1",
+  "description": "You can make and register your original custom block patterns.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vektor-inc/vk-legacy-notice.git"
+  },
+  "author": "Vektor,Inc.",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/vektor-inc/vk-legacy-notice/issues"
+  },
+  "homepage": "https://github.com/vektor-inc/vk-legacy-notice#readme",
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
+}
