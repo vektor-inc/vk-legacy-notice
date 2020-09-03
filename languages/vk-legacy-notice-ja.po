@@ -1,37 +1,78 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: VK Legacy Notice\n"
-"POT-Creation-Date: 2020-07-09 10:56+0900\n"
-"PO-Revision-Date: 2020-07-09 10:57+0900\n"
+"POT-Creation-Date: 2020-09-03 10:19+0900\n"
+"PO-Revision-Date: 2020-09-03 10:27+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: vk-legacy-notice.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: inc/vk-admin/package/class-vk-admin.php:317
+#: inc/plugin-update-checker/Puc/v4p10/Plugin/Ui.php:54
+msgid "View details"
+msgstr "詳細を見る"
+
+#: inc/plugin-update-checker/Puc/v4p10/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr "%s の詳細情報"
+
+#: inc/plugin-update-checker/Puc/v4p10/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr "更新を確認"
+
+#: inc/plugin-update-checker/Puc/v4p10/Plugin/Ui.php:213
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr "%s は最新です。"
+
+#: inc/plugin-update-checker/Puc/v4p10/Plugin/Ui.php:215
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "新しいバージョンの %s が利用可能です。"
+
+#: inc/plugin-update-checker/Puc/v4p10/Plugin/Ui.php:217
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr "%s の更新が利用可能かどうかを判断できませんでした。"
+
+#: inc/plugin-update-checker/Puc/v4p10/Plugin/Ui.php:223
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr "不明なステータスです \"%s\""
+
+#: inc/plugin-update-checker/Puc/v4p10/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr "更新履歴はありません。"
+
+#: inc/vk-admin/package/class-vk-admin.php:301
 msgid "Sorry, there is no post"
 msgstr "お知らせはありません"
 
-#: inc/vk-admin/package/class-vk-admin.php:374
+#: inc/vk-admin/package/class-vk-admin.php:355
 msgid "Vektor WordPress Information"
 msgstr "Vektor WordPress Information"
 
+#. Plugin Name of the plugin/theme
 #: inc/vk-admin/vk-admin-config.php:20
-msgid "VK Legacy Notice Main Setting"
-msgstr "VK Legacy Notice 基本設定"
+msgid "VK Legacy Notice"
+msgstr "VK Legacy Notice"
 
 #: inc/vk-admin/vk-admin-config.php:22
 #: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:41
@@ -47,73 +88,281 @@ msgctxt "label in admin menu"
 msgid "VK Legacy Notice"
 msgstr "VK Legacy Notice"
 
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:49
+msgid "記事の編集画面に移動"
+msgstr "記事の編集画面に移動"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:50
+msgid "ページ属性 > テンプレート を「デフォルトテンプレート」に変更"
+msgstr "ページ属性 > テンプレート を「デフォルトテンプレート」に変更"
+
 #: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:51
 msgid ""
-"Change Lightning Design Setting > Layout Setting to 1 column or 1 column "
-"( no subsection )."
+"Lightning デザイン設定 > レイアウト設定 を「1カラム（サブセクション無し）」"
+"に変更"
 msgstr ""
-"Lightning デザイン設定 > レイアウト設定 を 1 カラム か 1 カラム ( サブセク"
-"ション無し )  に変更してください。"
+"Lightning デザイン設定 > レイアウト設定 を「1カラム（サブセクション無し）」"
+"に変更"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:53
+msgid ""
+"Lightning デザイン設定 > ページヘッダーとパンくずリスト を「表示しない」に"
+"チェック"
+msgstr ""
+"Lightning デザイン設定 > ページヘッダーとパンくずリスト を「表示しない」に"
+"チェック"
 
 #: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:55
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:59
 msgid ""
-"Change Lightning Design Setting > Layout Setting to 1 column ( no "
-"subsection ) and fill checkbox that Page Header and Breadcrumb Don't display."
+"ウィジェットやビルダーブラグインではなく固定ページ内にブロックエディタでペー"
+"ジを構成してください。"
 msgstr ""
-"Lightning デザイン設定 > レイアウト設定 を 1 カラム ( サブセクション無し ) に"
-"変更し、ページヘッダーとパンくずリストを表示しないにチェックを入れてくださ"
-"い。"
+"ウィジェットやビルダーブラグインではなく固定ページ内にブロックエディタでペー"
+"ジを構成してください。"
 
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:63
-msgid "Delete single.php or Rename single.php as single-{ post type }.php."
-msgstr ""
-"single.php を削除するか、single.php を single-{ post type}.php となるようリ"
-"ネームしてください。"
-
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:67
-msgid "Delete page.php."
-msgstr "page.php を削除してください。"
-
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:81
-msgid "Legacy template"
-msgstr "古いテンプレート"
-
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:81
-msgid "is used"
-msgstr "が使用されています。"
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:97
+#, php-format
+msgid "Legacy template ( %s ) is used."
+msgstr "古いテンプレート ( %s ) が使用されています。"
 
 #: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:98
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:126
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:144
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:158
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:202
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:260
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:285
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:302
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:339
+msgid "対応方法"
+msgstr "対応方法"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:100
+msgid "対象箇所"
+msgstr "対象箇所"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:125
+msgid "「Lightning Advanced Slider」が有効化されています。"
+msgstr "「Lightning Advanced Slider」が有効化されています。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:128
+msgid ""
+"Bootsrap 4 ベースのスキンをご利用の場合、標準で「フェード」が使用可能です。"
+msgstr ""
+"Bootsrap 4 ベースのスキンをご利用の場合、標準で「フェード」が使用可能です。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:129
+msgid ""
+"VK Blocks Pro ご利用の場合、スライダーブロックを使用することで同等以上のこと"
+"が可能です。"
+msgstr ""
+"VK Blocks Pro ご利用の場合、スライダーブロックを使用することで同等以上のこと"
+"が可能です。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:143
+msgid "Bootsrap 3 ベースのスキンをご利用中です。"
+msgstr "Bootsrap 3 ベースのスキンをご利用中です。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:146
+msgid "Bootstrap 4 ベースのスキンをご利用ください。"
+msgstr "Bootstrap 4 ベースのスキンをご利用ください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:157
+msgid "Fort のフッターが明るいバージョンをご利用中です。"
+msgstr "Fort のフッターが明るいバージョンをご利用中です。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:160
+msgid "フッターカラー変更機能で同等以上のことができます。"
+msgstr "フッターカラー変更機能で同等以上のことができます。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:201
+#, php-format
+msgid "%s が存在しています。"
+msgstr "%s が存在しています。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:205
+#, php-format
+msgid "ファイルを %s ディレクトリ内に移動してください。"
+msgstr "ファイルを %s ディレクトリ内に移動してください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:207
+#, php-format
+msgid "その後、ファイル名を %s に変更してください。"
+msgstr "その後、ファイル名を %s に変更してください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:220
+msgid "トップページに指定した固定ページ内に下記のいずれかを設置してください。"
+msgstr ""
+"トップページに指定した固定ページ内に下記のいずれかを設置してください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:222
+msgid "VK Blocks Pro のアイコンカードブロック"
+msgstr "VK Blocks Pro のアイコンカードブロック"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:223
+msgid "VK Blocks の PR Blocks ブロック"
+msgstr "VK Blocks の PR Blocks ブロック"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:228
+msgid "固定ページ内に下記のいずれかのブロックを全幅で配置してください。"
+msgstr "固定ページ内に下記のいずれかのブロックを全幅で配置してください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:230
+msgid "カバーブロック"
+msgstr "カバーブロック"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:231
+msgid "VK Blocks Pro のアウターブロック"
+msgstr "VK Blocks Pro のアウターブロック"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:235
+msgid "その中に VK Blocks の見出しブロックを配置してください。"
+msgstr "その中に VK Blocks の見出しブロックを配置してください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:238
+msgid "外観 ＞ カスタマイズ > Lightning 機能設定"
+msgstr "外観 ＞ カスタマイズ > Lightning 機能設定"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:242
+msgid "Front Page PR Block"
+msgstr "Front Page PR Block"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:248
+msgid "Full Wide Title Widget"
+msgstr "Full Wide Title Widget"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:259
+#, php-format
+msgid "%s は古い機能です。"
+msgstr "%s は古い機能です。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:264
+#, php-format
+msgid "%1$sから %2$s にチェックを入れてください。"
+msgstr "%1$sから %2$s にチェックを入れてください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:284
+msgid "Font Awesome 4.7 が使われています"
+msgstr "Font Awesome 4.7 が使われています"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:288
+#, php-format
+msgid "外観 ＞カスタマイズ > %s Font Awesome と進んでください。"
+msgstr "外観 ＞カスタマイズ > %s Font Awesome と進んでください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:289
+msgid ""
+"その後、Font Awesome バージョン で Font Awesome 5.X を選択してください。"
+msgstr ""
+"その後、Font Awesome バージョン で Font Awesome 5.X を選択してください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:301
+msgid "旧 Media Posts が有効化されています。"
+msgstr "旧 Media Posts が有効化されています。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:305
+#, php-format
+msgid "外観 ＞カスタマイズ > %s 機能設定 と進んでください。"
+msgstr "外観 ＞カスタマイズ > %s 機能設定 と進んでください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:306
+msgid "その後「Media Posts を停止」にチェックを入れてください。"
+msgstr "その後「Media Posts を停止」にチェックを入れてください。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:308
+msgid "下記のいずれかを使用することで同等のことが可能です。"
+msgstr "下記のいずれかを使用することで同等のことが可能です。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:311
+#, php-format
+msgid "外観 ＞カスタマイズ > %s アーカイブ設定"
+msgstr "外観 ＞カスタマイズ > %s アーカイブ設定"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:312
+msgid "Media Posts BS4ウィジェット"
+msgstr "Media Posts BS4ウィジェット"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:316
+msgid "注意事項"
+msgstr "注意事項"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:317
+msgid "これを無効化することで下記ウィジェットエリアが使えなくなります"
+msgstr "これを無効化することで下記ウィジェットエリアが使えなくなります"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:319
+msgid "トップページコンテンツエリア左"
+msgstr "トップページコンテンツエリア左"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:320
+msgid "トップページコンテンツエリア右"
+msgstr "トップページコンテンツエリア右"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:321
+msgid "トップページコンテンツエリア下部"
+msgstr "トップページコンテンツエリア下部"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:323
+msgid "しかし、下記の方法で代替可能です。"
+msgstr "しかし、下記の方法で代替可能です。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:325
+msgid ""
+"固定ページにカラムブロックを配置し、カラム内に投稿リストブロックなどを配置"
+msgstr ""
+"固定ページにカラムブロックを配置し、カラム内に投稿リストブロックなどを配置"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:326
+msgid "ウィジェットエリアを自作後アクションフックを使って配置"
+msgstr "ウィジェットエリアを自作後アクションフックを使って配置"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:338
+msgid "VK 3PR エリア ウィジェットが使われています。"
+msgstr "VK 3PR エリア ウィジェットが使われています。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:342
+msgid ""
+"固定ページ内に VK Blocks Pro のカードブロックを使用する事で同様の表示が可能"
+"です。"
+msgstr ""
+"固定ページ内に VK Blocks Pro のカードブロックを使用する事で同様の表示が可能"
+"です。"
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:343
+msgid ""
+"その後、ExUnit > ExUnit から VK 3PR エリア ウィジェットを無効化してくださ"
+"い。 "
+msgstr ""
+"その後、ExUnit > ExUnit から VK 3PR エリア ウィジェットを無効化してくださ"
+"い。 "
+
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:350
 msgid "Congratulations! There is no legacy setting."
 msgstr "おめでとう！古い機能はありません。"
 
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:101
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:355
 msgid "Back to check page"
 msgstr "チェック用ページに戻る"
 
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:104
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:358
 msgid "This plugin can chack old Setting after this sentense"
 msgstr "このプラグインは下記の古い設定がないか確認することが可能です。"
 
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:106
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:360
 msgid "You use legacy functions, isn't it?"
 msgstr "古い機能を使用していないか"
 
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:107
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:361
 msgid "You use legacy files, isn't it?"
 msgstr "古いファイルを使用していないか"
 
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:108
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:362
 msgid "You use legacy options, isn't it?"
 msgstr "古い設定を使用していないか"
 
-#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:110
+#: inc/vk-legacy-notice/package/class-vk-legacy-notice.php:364
 msgid "Check legacies now!"
 msgstr "古い機能が有効化されていないか確認する"
-
-#. Plugin Name of the plugin/theme
-msgid "VK Legacy Notice"
-msgstr "VK Legacy Notice"
 
 #. Plugin URI of the plugin/theme
 #. Author URI of the plugin/theme
@@ -127,6 +376,36 @@ msgstr "このプラグインは古い機能を使っている場合に通知し
 #. Author of the plugin/theme
 msgid "Vektor,Inc."
 msgstr "Vektor,Inc."
+
+#~ msgid "VK Legacy Notice Main Setting"
+#~ msgstr "VK Legacy Notice 基本設定"
+
+#~ msgid ""
+#~ "Change Lightning Design Setting > Layout Setting to 1 column or 1 column "
+#~ "( no subsection )."
+#~ msgstr ""
+#~ "Lightning デザイン設定 > レイアウト設定 を 1 カラム か 1 カラム ( サブセ"
+#~ "クション無し )  に変更してください。"
+
+#~ msgid ""
+#~ "Change Lightning Design Setting > Layout Setting to 1 column ( no "
+#~ "subsection ) and fill checkbox that Page Header and Breadcrumb Don't "
+#~ "display."
+#~ msgstr ""
+#~ "Lightning デザイン設定 > レイアウト設定 を 1 カラム ( サブセクション無"
+#~ "し ) に変更し、ページヘッダーとパンくずリストを表示しないにチェックを入れ"
+#~ "てください。"
+
+#~ msgid "Delete single.php or Rename single.php as single-{ post type }.php."
+#~ msgstr ""
+#~ "single.php を削除するか、single.php を single-{ post type}.php となるよう"
+#~ "リネームしてください。"
+
+#~ msgid "Delete page.php."
+#~ msgstr "page.php を削除してください。"
+
+#~ msgid "is used"
+#~ msgstr "が使用されています。"
 
 #~ msgid "is using"
 #~ msgstr "で使用しています"
