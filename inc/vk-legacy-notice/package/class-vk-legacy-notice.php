@@ -420,7 +420,7 @@ class VK_Legacy_Notice {
 			$text .= '<a href="' . admin_url() . 'options-general.php?page=vk-legacy-notice&check=result" class="button button-primary">';
 			$text .= __( '今すぐチェックする！', 'vk-legacy-notice' );
 			$text .= '</a>';
-			$text .= '<a href="?' . $vk_legacy_ignore_link . '" class="button button-primary">';
+			$text .= '<a href="?' . $vk_legacy_ignore_link . '" class="button button-secondary">';
 			$text .= __( '今回は無視する', 'vk-legacy-notice' );
 			$text .= '</a>';
 			$text .= '</p></div>';
