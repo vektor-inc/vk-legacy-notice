@@ -15,7 +15,8 @@ class VK_Legacy_Notice {
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( __CLASS__, 'add_admin_menu' ), 10, 2 );
-		add_action( 'admin_notices', array( __CLASS__, 'admin_notice' ) );
+		add_action( 'admin_notices', array( __CLASS__, 'add_admin_notice' ) );
+		add_action( 'admin_init', array( __CLASS__, 'add_admin_init' ) );
 	}
 
 	/**
@@ -391,21 +392,57 @@ class VK_Legacy_Notice {
 	}
 
 	/**
+	 * Get Option
+	 */
+	public static function get_options() {
+		$options = get_option( 'vk_legacy_notice_options' );
+		$default = array(
+			'checked_version' => '0.0.0',
+			'check_flag'      => true,
+		);
+		$options = wp_parse_args( $options, $default );
+		return $options;
+	}
+
+	/**
 	 * Admin Notice
 	 */
-	public static function admin_notice() {
+	public static function add_admin_notice() {
+		global $plugin_version;
 		global $pagenow;
-		if ( 'index.php' === $pagenow && false === self::check_list( 'hide_check' ) ) {
+		global $vk_legacy_ignore_link;
+		$options = self::get_options();
+
+		if ( 'index.php' === $pagenow && false === self::check_list( 'hide_check' ) && true === $options['check_flag'] ) {
 			$text  = '<div class="notice notice-info"><p>';
 			$text .= '<strong>VK Legacy Notice : </strong> ';
-			$text .= __( '古い機能を使用しているようです。一度チェックしてみることをおすすめします。', 'vk-all-in-one-expansion-unit' );
+			$text .= __( '古い機能を使用しているようです。一度チェックしてみることをおすすめします。', 'vk-legacy-notice' );
 			$text .= '<a href="' . admin_url() . 'options-general.php?page=vk-legacy-notice&check=result" class="button button-primary">';
 			$text .= __( '今すぐチェックする！', 'vk-legacy-notice' );
+			$text .= '</a>';
+			$text .= '<a href="?' . $vk_legacy_ignore_link . '" class="button button-primary">';
+			$text .= __( '今回は無視する', 'vk-legacy-notice' );
 			$text .= '</a>';
 			$text .= '</p></div>';
 			echo wp_kses_post( $text );
 		}
 	}
 
+	/**
+	 * Admin init
+	 */
+	public static function add_admin_init() {
+		global $plugin_version;
+		global $vk_legacy_ignore_link;
+		$options = get_option( 'vk_legacy_notice_options' );
+		if ( isset( $_GET[ $vk_legacy_ignore_link ] ) ) {
+			$options['check_flag'] = false;
+		}
+		if ( isset( $options['checked_version'] ) && $options['checked_version'] !== $plugin_version ) {
+			$options['check_flag'] = true;
+		}
+		$options['checked_version'] = $plugin_version;
+		update_option( 'vk_legacy_notice_options', $options );
+	}
 }
 new VK_Legacy_Notice();
