@@ -419,7 +419,7 @@ class VK_Legacy_Notice {
 			$text .= __( '古い機能を使用しているようです。一度チェックしてみることをおすすめします。', 'vk-legacy-notice' );
 			$text .= '<a href="' . admin_url() . 'options-general.php?page=vk-legacy-notice&check=result" class="button button-primary">';
 			$text .= __( '今すぐチェックする！', 'vk-legacy-notice' );
-			$text .= '</a>';
+			$text .= '</a> ';
 			$text .= '<a href="?' . $vk_legacy_ignore_link . '" class="button button-secondary">';
 			$text .= __( '今回は無視する', 'vk-legacy-notice' );
 			$text .= '</a>';
