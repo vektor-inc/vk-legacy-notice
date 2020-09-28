@@ -362,7 +362,24 @@ class VK_Legacy_Notice {
 			$back_button .= esc_html__( 'Back to check page', 'vk-legacy-notice' );
 			$back_button .= '</a>';
 			echo wp_kses_post( $back_button );
+
+			$options = get_option( 'vk_legacy_notice_options' );
+			$options['check_flag'] = false;
+			update_option( 'vk_legacy_notice_options', $options );
 		}
+	}
+
+	/**
+	 * Get Option
+	 */
+	public static function get_options() {
+		$options = get_option( 'vk_legacy_notice_options' );
+		$default = array(
+			'checked_version' => '0.0.0',// チェック時のバージョン.
+			'check_flag'      => true,// 警告を表示するか否か
+		);
+		$options = wp_parse_args( $options, $default );
+		return $options;
 	}
 
 	/**
@@ -387,22 +404,9 @@ class VK_Legacy_Notice {
 			$explain_text .= '</a>';
 
 			echo wp_kses_post( $explain_text );
-
 		}
 	}
 
-	/**
-	 * Get Option
-	 */
-	public static function get_options() {
-		$options = get_option( 'vk_legacy_notice_options' );
-		$default = array(
-			'checked_version' => '0.0.0',
-			'check_flag'      => true,
-		);
-		$options = wp_parse_args( $options, $default );
-		return $options;
-	}
 
 	/**
 	 * Admin Notice
