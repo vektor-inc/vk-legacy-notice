@@ -45,10 +45,12 @@ class VK_Legacy_Notice {
 
 		$legacy_description = '';
 
+		// １カラムテンプレートを選択している場合
 		$description_change_template  = '<li>' . __( '記事の編集画面に移動', 'vk-legacy-notice' ) . '</li>';
 		$description_change_template .= '<li>' . __( 'ページ属性 > テンプレート を「デフォルトテンプレート」に変更', 'vk-legacy-notice' ) . '</li>';
 		$description_change_template .= '<li>' . __( 'Lightning デザイン設定 > レイアウト設定 を「1カラム（サブセクション無し）」に変更', 'vk-legacy-notice' ) . '</li>';
 
+		// LPテンプレートを選択している場合
 		$description_for_lp = '<li>' . __( 'Lightning デザイン設定 > ページヘッダーとパンくずリスト を「表示しない」にチェック', 'vk-legacy-notice' ) . '</li>';
 
 		$description_change_to_gutenberg = '<li>' . __( 'ウィジェットやビルダーブラグインではなく固定ページ内にブロックエディタでページを構成してください。', 'vk-legacy-notice' ) . '</li>';
@@ -59,11 +61,23 @@ class VK_Legacy_Notice {
 				'alternative' => '<ol>' . $description_change_template . '</ol>',
 			),
 			array(
+				'template'    => '_g2/page-onecolumn.php',
+				'alternative' => '<ol>' . $description_change_template . '</ol>',
+			),
+			array(
 				'template'    => 'page-lp-builder.php',
 				'alternative' => '<ol>' . $description_change_template . $description_for_lp . $description_change_to_gutenberg . '</ol>',
 			),
 			array(
+				'template'    => '_g2/page-lp-builder.php',
+				'alternative' => '<ol>' . $description_change_template . $description_for_lp . $description_change_to_gutenberg . '</ol>',
+			),
+			array(
 				'template'    => 'page-lp.php',
+				'alternative' => '<ol>' . $description_change_template . $description_for_lp . $description_change_to_gutenberg . '</ol>',
+			),
+			array(
+				'template'    => '_g2/page-lp.php',
 				'alternative' => '<ol>' . $description_change_template . $description_for_lp . $description_change_to_gutenberg . '</ol>',
 			),
 
