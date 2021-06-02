@@ -13,7 +13,7 @@
  * @package VK Legacy Notice
  */
 
- defined( 'ABSPATH' ) || exit;
+defined( 'ABSPATH' ) || exit;
 
 global $plugin_version;
 $plugin_data    = get_file_data( __FILE__, array( 'version' => 'Version' ) );
