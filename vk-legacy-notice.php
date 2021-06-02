@@ -3,7 +3,7 @@
  * Plugin Name: VK Legacy Notice
  * Plugin URI: https://lightning.nagoya/
  * Description: This plugin notices legacy functions.
- * Version: 0.0.2
+ * Version: 0.0.3
  * Author:  Vektor,Inc.
  * Author URI: https://lightning.nagoya/
  * Text Domain: vk-legacy-notice
