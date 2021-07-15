@@ -227,61 +227,65 @@ class VK_Legacy_Notice {
 			}
 
 			// Old option check.
-			$options = get_option( 'lightning_theme_options' );
 
-			$widget_front_pr_alternative  = '<li>';
-			$widget_front_pr_alternative .= __( 'トップページに指定した固定ページ内に下記のいずれかを設置してください。', 'vk-legacy-notice' );
-			$widget_front_pr_alternative .= '<ul>';
-			$widget_front_pr_alternative .= '<li>' . __( 'VK Blocks Pro のアイコンカードブロック', 'vk-legacy-notice' ) . '</li>';
-			$widget_front_pr_alternative .= '<li>' . __( 'VK Blocks の PR Blocks ブロック', 'vk-legacy-notice' ) . '</li>';
-			$widget_front_pr_alternative .= '</ul>';
-			$widget_front_pr_alternative .= '</li>';
+			if ( ! function_exists( 'lightning_is_g3' ) && ( function_exists( 'lightning_is_g3' ) && ! lightning_is_g3() ) ) {
 
-			$widget_full_wide_title_alternative  = '<li>';
-			$widget_full_wide_title_alternative .= __( '固定ページ内に下記のいずれかのブロックを全幅で配置してください。', 'vk-legacy-notice' );
-			$widget_full_wide_title_alternative .= '<ul>';
-			$widget_full_wide_title_alternative .= '<li>' . __( 'カバーブロック', 'vk-legacy-notice' ) . '</li>';
-			$widget_full_wide_title_alternative .= '<li>' . __( 'VK Blocks Pro のアウターブロック', 'vk-legacy-notice' ) . '</li>';
-			$widget_full_wide_title_alternative .= '</ul>';
-			$widget_full_wide_title_alternative .= '</li>';
-			$widget_full_wide_title_alternative .= '<li>';
-			$widget_full_wide_title_alternative .= __( 'その中に VK Blocks の見出しブロックを配置してください。', 'vk-legacy-notice' );
-			$widget_full_wide_title_alternative .= '</li>';
+				$options = get_option( 'lightning_theme_options' );
 
-			$customize_panel = __( '外観 ＞ カスタマイズ > Lightning 機能設定', 'vk-legacy-notice' );
+				$widget_front_pr_alternative  = '<li>';
+				$widget_front_pr_alternative .= __( 'トップページに指定した固定ページ内に下記のいずれかを設置してください。', 'vk-legacy-notice' );
+				$widget_front_pr_alternative .= '<ul>';
+				$widget_front_pr_alternative .= '<li>' . __( 'VK Blocks Pro のアイコンカードブロック', 'vk-legacy-notice' ) . '</li>';
+				$widget_front_pr_alternative .= '<li>' . __( 'VK Blocks の PR Blocks ブロック', 'vk-legacy-notice' ) . '</li>';
+				$widget_front_pr_alternative .= '</ul>';
+				$widget_front_pr_alternative .= '</li>';
 
-			$check_options = array(
-				'widget_front_pr'        => array(
-					'label'       => __( 'Front Page PR Block', 'vk-legacy-notice' ),
-					'option'      => 'widget_front_pr',
-					'alternative' => $widget_front_pr_alternative,
-					'panel'       => $customize_panel,
-				),
-				'widget_full_wide_title' => array(
-					'label'       => __( 'Full Wide Title Widget', 'vk-legacy-notice' ),
-					'option'      => 'widget_front_pr',
-					'alternative' => $widget_full_wide_title_alternative,
-					'panel'       => $customize_panel,
-				),
-			);
+				$widget_full_wide_title_alternative  = '<li>';
+				$widget_full_wide_title_alternative .= __( '固定ページ内に下記のいずれかのブロックを全幅で配置してください。', 'vk-legacy-notice' );
+				$widget_full_wide_title_alternative .= '<ul>';
+				$widget_full_wide_title_alternative .= '<li>' . __( 'カバーブロック', 'vk-legacy-notice' ) . '</li>';
+				$widget_full_wide_title_alternative .= '<li>' . __( 'VK Blocks Pro のアウターブロック', 'vk-legacy-notice' ) . '</li>';
+				$widget_full_wide_title_alternative .= '</ul>';
+				$widget_full_wide_title_alternative .= '</li>';
+				$widget_full_wide_title_alternative .= '<li>';
+				$widget_full_wide_title_alternative .= __( 'その中に VK Blocks の見出しブロックを配置してください。', 'vk-legacy-notice' );
+				$widget_full_wide_title_alternative .= '</li>';
 
-			foreach ( $check_options as $check_option ) {
-				if ( empty( $options['disable_functions'][ $check_option['option'] ] ) ) {
-					$legacy_description .= '<div class="adminMain_main_content">';
-					// translators: %s is old function.
-					$legacy_description .= '<h4 class="alert alert-danger">' . sprintf( __( '%s は古い機能です。', 'vk-legacy-notice' ), $check_option['label'] ) . '</h4>';
-					$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
-					$legacy_description .= '<ol>';
-					$legacy_description .= $check_option['alternative'];
-					// translators: Check disable options.
-					$legacy_description .= '<li>' . sprintf( __( '%1$sから %2$s にチェックを入れてください。', 'vk-legacy-notice' ), $check_option['panel'], $check_option['label'] ) . '</li>';
-					$legacy_description .= '</ol>';
-					$legacy_description .= '</div>';
+				$customize_panel = __( '外観 ＞ カスタマイズ > Lightning 機能設定', 'vk-legacy-notice' );
 
-					$perfect = false;
+				$check_options = array(
+					'widget_front_pr'        => array(
+						'label'       => __( 'Front Page PR Block', 'vk-legacy-notice' ),
+						'option'      => 'widget_front_pr',
+						'alternative' => $widget_front_pr_alternative,
+						'panel'       => $customize_panel,
+					),
+					'widget_full_wide_title' => array(
+						'label'       => __( 'Full Wide Title Widget', 'vk-legacy-notice' ),
+						'option'      => 'widget_front_pr',
+						'alternative' => $widget_full_wide_title_alternative,
+						'panel'       => $customize_panel,
+					),
+				);
+
+				foreach ( $check_options as $check_option ) {
+					if ( empty( $options['disable_functions'][ $check_option['option'] ] ) ) {
+						$legacy_description .= '<div class="adminMain_main_content">';
+						// translators: %s is old function.
+						$legacy_description .= '<h4 class="alert alert-danger">' . sprintf( __( '%s は古い機能です。', 'vk-legacy-notice' ), $check_option['label'] ) . '</h4>';
+						$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
+						$legacy_description .= '<ol>';
+						$legacy_description .= $check_option['alternative'];
+						// translators: Check disable options.
+						$legacy_description .= '<li>' . sprintf( __( '%1$sから %2$s にチェックを入れてください。', 'vk-legacy-notice' ), $check_option['panel'], $check_option['label'] ) . '</li>';
+						$legacy_description .= '</ol>';
+						$legacy_description .= '</div>';
+
+						$perfect = false;
+					}
 				}
-			}
-		} // Lightning 関連 END.
+			} // Lightning 関連 END.
+		} // is_not_g3
 
 		// Font Awesome.
 		if ( class_exists( 'Vk_Font_Awesome_Versions' ) ) {
@@ -351,11 +355,11 @@ class VK_Legacy_Notice {
 			$prefix         = '';
 			if ( in_array( '3pr_area', $enable_widgets, true ) ) {
 				$legacy_description .= '<div class="adminMain_main_content">';
-				$legacy_description .= '<h4 class="alert alert-danger">' . __( 'VK 3PR エリア ウィジェットが使われています。', 'vk-legacy-notice' ) . '</h4>';
+				$legacy_description .= '<h4 class="alert alert-danger">' . __( 'VK 3PR エリア ウィジェットが有効化されています。', 'vk-legacy-notice' ) . '</h4>';
 				$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
 				$legacy_description .= '<ol>';
 				// translators: Theme Prefix.
-				$legacy_description .= '<li>' . __( '固定ページ内に VK Blocks Pro のカードブロックを使用する事で同様の表示が可能です。', 'vk-legacy-notice' ) . '</li>';
+				$legacy_description .= '<li>' . __( '固定ページ内に ブロックパターンの「カラム」カテゴリにある「PR カラム」パターンか VK Blocks Pro の「カード」ブロックを使用する事で同様の表示が可能です。', 'vk-legacy-notice' ) . '</li>';
 				$legacy_description .= '<li>' . __( 'その後、ExUnit > ExUnit から VK 3PR エリア ウィジェットを無効化してください。 ', 'vk-legacy-notice' ) . '</li>';
 				$legacy_description .= '</ol>';
 				$legacy_description .= '</div>';
@@ -377,7 +381,7 @@ class VK_Legacy_Notice {
 			$back_button .= '</a>';
 			echo wp_kses_post( $back_button );
 
-			$options = get_option( 'vk_legacy_notice_options' );
+			$options               = get_option( 'vk_legacy_notice_options' );
 			$options['check_flag'] = false;
 			update_option( 'vk_legacy_notice_options', $options );
 		}
@@ -389,8 +393,8 @@ class VK_Legacy_Notice {
 	public static function get_options() {
 		$options = get_option( 'vk_legacy_notice_options' );
 		$default = array(
-			'checked_version' => '0.0.0',// チェック時のバージョン.
-			'check_flag'      => true,// 警告を表示するか否か
+			'checked_version' => '0.0.6', // チェック時のバージョン.
+			'check_flag'      => true, // 警告を表示するか否か
 		);
 		$options = wp_parse_args( $options, $default );
 		return $options;
