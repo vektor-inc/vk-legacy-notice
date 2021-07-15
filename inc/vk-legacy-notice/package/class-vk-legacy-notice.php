@@ -393,7 +393,7 @@ class VK_Legacy_Notice {
 	public static function get_options() {
 		$options = get_option( 'vk_legacy_notice_options' );
 		$default = array(
-			'checked_version' => '0.0.0', // チェック時のバージョン.
+			'checked_version' => '0.0.6', // チェック時のバージョン.
 			'check_flag'      => true, // 警告を表示するか否か
 		);
 		$options = wp_parse_args( $options, $default );
