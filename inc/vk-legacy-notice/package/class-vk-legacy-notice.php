@@ -355,7 +355,7 @@ class VK_Legacy_Notice {
 				$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
 				$legacy_description .= '<ol>';
 				// translators: Theme Prefix.
-				$legacy_description .= '<li>' . __( '固定ページ内に ブロックのパターンの「カラム」カテゴリにある「PR カラム」パターンか VK Blocks Pro の「カード」ブロックを使用する事で同様の表示が可能です。', 'vk-legacy-notice' ) . '</li>';
+				$legacy_description .= '<li>' . __( '固定ページ内に ブロックパターンの「カラム」カテゴリにある「PR カラム」パターンか VK Blocks Pro の「カード」ブロックを使用する事で同様の表示が可能です。', 'vk-legacy-notice' ) . '</li>';
 				$legacy_description .= '<li>' . __( 'その後、ExUnit > ExUnit から VK 3PR エリア ウィジェットを無効化してください。 ', 'vk-legacy-notice' ) . '</li>';
 				$legacy_description .= '</ol>';
 				$legacy_description .= '</div>';
