@@ -120,6 +120,11 @@ class VK_Legacy_Notice {
 					$legacy_post_list .= '</a> ';
 					$legacy_post_list .= '</li>';
 
+					$lightning_generation = get_option( 'lightning_theme_generation' );
+					if ( ! empty( $lightning_generation ) && 'g2' !== $lightning_generation ) {
+						update_post_meta( $legacy_post->ID, '_wp_page_template', array( '' ) );
+					}
+
 					$legacy_description .= $legacy_post_list;
 				}
 				$legacy_description .= '</ul>';
