@@ -104,7 +104,8 @@ class VK_Legacy_Notice {
 			);
 
 			$legacy_posts = get_posts( $args );
-			if ( ! empty( $legacy_posts ) ) {
+			$lightning_generation = get_option( 'lightning_theme_generation' );
+			if ( ! empty( $legacy_posts ) && ! empty( $lightning_generation ) && 'g2' === $lightning_generation ) {
 				$legacy_description .= '<div class="adminMain_main_content">';
 				// translators: Legacy template ( template for page ) is used.
 				$legacy_description .= '<h4 class="alert alert-danger">' . sprintf( __( 'Legacy template ( %s ) is used.', 'vk-legacy-notice' ), $post_template['template'] ) . '</h4>';
@@ -120,10 +121,7 @@ class VK_Legacy_Notice {
 					$legacy_post_list .= '</a> ';
 					$legacy_post_list .= '</li>';
 
-					$lightning_generation = get_option( 'lightning_theme_generation' );
-					if ( ! empty( $lightning_generation ) && 'g2' !== $lightning_generation ) {
-						update_post_meta( $legacy_post->ID, '_wp_page_template', array( '' ) );
-					}
+
 
 					$legacy_description .= $legacy_post_list;
 				}
@@ -131,6 +129,10 @@ class VK_Legacy_Notice {
 				$legacy_description .= '</div>';
 
 				$perfect = false;
+			} elseif ( ! empty( $legacy_posts ) && ! empty( $lightning_generation ) && 'g2' !== $lightning_generation ) {
+				foreach ( $legacy_posts as $legacy_post ) {
+					update_post_meta( $legacy_post->ID, '_wp_page_template', array( '' ) );
+				}
 			}
 		}
 
