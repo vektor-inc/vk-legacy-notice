@@ -131,7 +131,7 @@ class VK_Legacy_Notice {
 				$perfect = false;
 			} elseif ( ! empty( $legacy_posts ) && ! empty( $lightning_generation ) && 'g2' !== $lightning_generation ) {
 				foreach ( $legacy_posts as $legacy_post ) {
-					update_post_meta( $legacy_post->ID, '_wp_page_template', array( '' ) );
+					update_post_meta( $legacy_post->ID, '_wp_page_template', array() );
 				}
 			}
 		}
