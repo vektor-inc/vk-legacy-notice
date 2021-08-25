@@ -95,7 +95,9 @@ class VK_Legacy_Notice {
 		);
 
 		foreach ( $post_templates as $post_template ) {
-
+			/**
+			 * テンプレート置換処理用のリスト
+			 */
 			$args = array(
 				'post_type'      => 'any',
 				'posts_per_page' => -1,
@@ -103,6 +105,62 @@ class VK_Legacy_Notice {
 				'meta_value'     => $post_template['template'],
 			);
 
+			$legacy_posts = get_posts( $args );
+			if ( ! empty( $_GET['template-change'] ) && ( 'full' === $_GET['template-change'] || 'onecolumn' === $_GET['template-change'] ) ) {
+				foreach ( $legacy_posts as $legacy_post ) {
+					$page_template = get_post_meta( $legacy_post->ID, '_wp_page_template', true );
+					if (
+						(
+							'full' === $_GET['template-change'] ||
+							'onecolumn' === $_GET['template-change']
+						) &&
+						(
+							'page-onecolumn.php' === $page_template ||
+							'_g2/page-onecolumn.php' === $page_template
+						)
+					) {
+
+						// Lightning デザイン設定を取得
+						$page_meta = get_post_meta( $legacy_post->ID, '_lightning_design_setting', true );
+
+						// レイアウトを切り替え
+						$page_meta['layout'] = 'col-one-no-subsection';
+
+						// メタ情報を更新
+						update_post_meta( $legacy_post->ID, '_lightning_design_setting', $page_meta );
+						delete_post_meta( $legacy_post->ID, '_wp_page_template' );
+					} elseif (
+						'full' === $_GET['template-change'] &&
+						(
+							'page-lp.php' === $page_template ||
+							'_g2/page-lp.php' === $page_template ||
+							'page-lp-builder.php' === $page_template ||
+							'_g2/page-lp-builder.php' === $page_template
+						)
+					 ) {
+
+						// Lightning デザイン設定を取得
+						$page_meta = get_post_meta( $legacy_post->ID, '_lightning_design_setting', true );
+
+						// レイアウトを切り替え
+						$page_meta['layout']             = 'col-one-no-subsection';
+
+						// ページヘッダーを非表示
+						$page_meta['hidden_page_header'] = true;
+
+						// パンくずを非表示
+						$page_meta['hidden_breadcrumb']  = true;
+
+						// メタ情報を更新
+						update_post_meta( $legacy_post->ID, '_lightning_design_setting', $page_meta );
+						delete_post_meta( $legacy_post->ID, '_wp_page_template' );
+					}
+				}
+			}
+
+			/**
+			 * テンプレート置換処理後のリストを再取得
+			 */
 			$legacy_posts = get_posts( $args );
 			if ( ! empty( $legacy_posts ) ) {
 				$legacy_description .= '<div class="adminMain_main_content">';
@@ -120,9 +178,22 @@ class VK_Legacy_Notice {
 					$legacy_post_list .= '</a> ';
 					$legacy_post_list .= '</li>';
 
+
+
 					$legacy_description .= $legacy_post_list;
 				}
 				$legacy_description .= '</ul>';
+
+				// 全て置換するためのボタンリンク
+				$change_link_full = admin_url() . 'options-general.php?page=vk-legacy-notice&check=result&template-change=full';
+				// LP 以外を置換するためのボタンリンク
+				$change_link_onecolumn = admin_url() . 'options-general.php?page=vk-legacy-notice&check=result&template-change=onecolumn';
+
+				$legacy_description .= '<p>';
+				$legacy_description .= __( '一括置換しますか？', 'vk-legacy-notice' );
+				$legacy_description .= '<a href="' . $change_link_full . '" class="button button-primary">' . __( '全て一括置換する', 'lightning' ) . '</a>';
+				$legacy_description .= '<a href="' . $change_link_onecolumn . '" class="button button-primary">' . __( 'LP 以外を一括置換する', 'lightning' ) . '</a>';
+				$legacy_description .= '</p>';
 				$legacy_description .= '</div>';
 
 				$perfect = false;
