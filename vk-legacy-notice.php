@@ -26,10 +26,8 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/vk-legacy-notic
 /**
  * Updater
  */
-require dirname( __FILE__ ) . '/inc/plugin-update-checker/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+$myUpdateChecker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
 	'https://github.com/vektor-inc/vk-legacy-notice',
 	__FILE__,
 	'vk-legacy-notice'
 );
-

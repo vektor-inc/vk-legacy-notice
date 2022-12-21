@@ -21,6 +21,8 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Upgrade Notice ==
 
+[ その他 ] プラグインアップデートチェッカーを composer 管理の５系にアップデート
+
 = 1.0 =
 Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
 
