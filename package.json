@@ -22,6 +22,6 @@
   },
   "devDependencies": {
     "gulp-replace": "^1.0.0",
-    "npm-check-updates": "^11.3.0"
+    "npm-check-updates": "^16.6.2"
   }
 }
