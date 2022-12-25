@@ -23,11 +23,13 @@ load_plugin_textdomain( 'vk-legacy-notice', false, dirname( plugin_basename( __F
 require_once plugin_dir_path( __FILE__ ) . 'inc/vk-admin/vk-admin-config.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/vk-legacy-notice-config.php';
 
+require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+
 /**
  * Updater
  */
-if ( ! class_exists( 'YahnisElsts\PluginUpdateChecker\v5\PucFactory' ) ) {
-	$myUpdateChecker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+if ( class_exists( 'YahnisElsts\PluginUpdateChecker\v5\PucFactory' ) ) {
+	$my_update_checker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
 		'https://github.com/vektor-inc/vk-legacy-notice',
 		__FILE__,
 		'vk-legacy-notice'
