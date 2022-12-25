@@ -23,7 +23,14 @@ load_plugin_textdomain( 'vk-legacy-notice', false, dirname( plugin_basename( __F
 require_once plugin_dir_path( __FILE__ ) . 'inc/vk-admin/vk-admin-config.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/vk-legacy-notice-config.php';
 
-require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+/**
+ * Composer autoload
+ */
+$autoload_path = plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+// vendor ディレクトリがない状態で誤配信された場合に Fatal Error にならないようにファイルの存在確認.
+if ( file_exists( $autoload_path ) ) {
+	require_once $autoload_path;
+}
 
 /**
  * Updater
