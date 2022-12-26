@@ -24,12 +24,21 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/vk-admin/vk-admin-config.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/vk-legacy-notice-config.php';
 
 /**
+ * Composer autoload
+ */
+$autoload_path = plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+// vendor ディレクトリがない状態で誤配信された場合に Fatal Error にならないようにファイルの存在確認.
+if ( file_exists( $autoload_path ) ) {
+	require_once $autoload_path;
+}
+
+/**
  * Updater
  */
-require dirname( __FILE__ ) . '/inc/plugin-update-checker/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://github.com/vektor-inc/vk-legacy-notice',
-	__FILE__,
-	'vk-legacy-notice'
-);
-
+if ( class_exists( 'YahnisElsts\PluginUpdateChecker\v5\PucFactory' ) ) {
+	$my_update_checker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+		'https://github.com/vektor-inc/vk-legacy-notice',
+		__FILE__,
+		'vk-legacy-notice'
+	);
+}

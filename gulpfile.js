@@ -11,7 +11,7 @@ gulp.task('dist', function (done) {
 		'./assets/**',
 		'./inc/**',
 		'./languages/**',
-		"!./vendor/**",
+		"./vendor/**",
 		"!./.vscode/**",
 		"!./bin/**",
 		"!./dist/**",
