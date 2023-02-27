@@ -299,7 +299,7 @@ class VK_Legacy_Notice {
 
 			// Old option check.
 
-			if ( ! function_exists( 'lightning_is_g3' ) && ( function_exists( 'lightning_is_g3' ) && ! lightning_is_g3() ) ) {
+			if ( ! function_exists( 'lightning_is_g3' ) || ( function_exists( 'lightning_is_g3' ) && ! lightning_is_g3() ) ) {
 
 				$options = get_option( 'lightning_theme_options' );
 
@@ -333,7 +333,7 @@ class VK_Legacy_Notice {
 					),
 					'widget_full_wide_title' => array(
 						'label'       => __( 'Full Wide Title Widget', 'vk-legacy-notice' ),
-						'option'      => 'widget_front_pr',
+						'option'      => 'widget_full_wide_title',
 						'alternative' => $widget_full_wide_title_alternative,
 						'panel'       => $customize_panel,
 					),
