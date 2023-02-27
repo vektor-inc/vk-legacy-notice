@@ -304,11 +304,7 @@ class VK_Legacy_Notice {
 				$options = get_option( 'lightning_theme_options' );
 
 				$widget_front_pr_alternative  = '<li>';
-				$widget_front_pr_alternative .= __( 'トップページに指定した固定ページ内に下記のいずれかを設置してください。', 'vk-legacy-notice' );
-				$widget_front_pr_alternative .= '<ul>';
-				$widget_front_pr_alternative .= '<li>' . __( 'VK Blocks Pro のアイコンカードブロック', 'vk-legacy-notice' ) . '</li>';
-				$widget_front_pr_alternative .= '<li>' . __( 'VK Blocks の PR Blocks ブロック', 'vk-legacy-notice' ) . '</li>';
-				$widget_front_pr_alternative .= '</ul>';
+				$widget_front_pr_alternative .= __( 'トップページに指定した固定ページ内に VK Blocks Pro のグリッドカラムカードブロックとアイコンブロックを使うと再現可能です。', 'vk-legacy-notice' );
 				$widget_front_pr_alternative .= '</li>';
 
 				$widget_full_wide_title_alternative  = '<li>';
