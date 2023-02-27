@@ -322,7 +322,7 @@ class VK_Legacy_Notice {
 				$widget_full_wide_title_alternative .= __( 'その中に VK Blocks の見出しブロックを配置してください。', 'vk-legacy-notice' );
 				$widget_full_wide_title_alternative .= '</li>';
 
-				$customize_panel = __( '外観 ＞ カスタマイズ > Lightning 機能設定', 'vk-legacy-notice' );
+				$customize_panel = __( '外観 > カスタマイズ > Lightning 機能設定', 'vk-legacy-notice' );
 
 				$check_options = array(
 					'widget_front_pr'        => array(
