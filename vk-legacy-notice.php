@@ -15,14 +15,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $plugin_version;
-$plugin_data    = get_file_data( __FILE__, array( 'version' => 'Version' ) );
-$plugin_version = $plugin_data['version'];
-
-load_plugin_textdomain( 'vk-legacy-notice', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-require_once plugin_dir_path( __FILE__ ) . 'inc/vk-admin/vk-admin-config.php';
-require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/vk-legacy-notice-config.php';
-
 /**
  * Composer autoload
  */
@@ -31,6 +23,15 @@ $autoload_path = plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 if ( file_exists( $autoload_path ) ) {
 	require_once $autoload_path;
 }
+
+global $plugin_version;
+$plugin_data    = get_file_data( __FILE__, array( 'version' => 'Version' ) );
+$plugin_version = $plugin_data['version'];
+
+load_plugin_textdomain( 'vk-legacy-notice', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+require_once plugin_dir_path( __FILE__ ) . 'admin/admin.php';
+require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/config.php';
+
 
 /**
  * Updater

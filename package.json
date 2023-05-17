@@ -4,8 +4,9 @@
   "description": "You can make and register your original custom block patterns.",
   "main": "gulpfile.js",
   "scripts": {
-    "build": "gulp replace_text_domain",
-    "dist": "gulp replace_text_domain && gulp dist"
+    "update": "ncu -u && npm install",
+    "build": "composer install --no-dev && gulp replace_text_domain",
+    "dist": "gulp dist"
   },
   "repository": {
     "type": "git",
@@ -17,11 +18,12 @@
     "url": "https://github.com/vektor-inc/vk-legacy-notice/issues"
   },
   "homepage": "https://github.com/vektor-inc/vk-legacy-notice#readme",
-  "dependencies": {
-    "gulp": "^4.0.2"
-  },
   "devDependencies": {
-    "gulp-replace": "^1.0.0",
-    "npm-check-updates": "^16.6.2"
+    "gulp": "^4.0.2",
+    "gulp-replace": "^1.1.4",
+    "npm-check-updates": "^16.10.12"
+  },
+  "volta": {
+    "node": "18.16.0"
   }
 }
