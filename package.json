@@ -4,11 +4,11 @@
   "description": "You can make and register your original custom block patterns.",
   "main": "gulpfile.js",
   "scripts": {
-    "update": "ncu -u && npm install",
+    "update": "ncu -u -x '@wordpress/env' && rm -rf node_modules package-lock.json && npm install",
     "wp-env": "wp-env",
     "build": "gulp replace_text_domain",
     "dist": "composer install --no-dev && gulp dist && composer install",
-    "phpunit": "composer install && wp-env run tests-cli --env-cwd=wp-content/plugins/vk-legacy-notice 'phpunit -c .phpunit.xml --testsuite default --verbose'"
+    "phpunit": "composer install && wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/vk-legacy-notice/.phpunit.xml --testsuite default --verbose'"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/vektor-inc/vk-legacy-notice#readme",
   "devDependencies": {
-    "@wordpress/env": "^7.0.0",
+    "@wordpress/env": "5.16.0",
     "gulp": "^4.0.2",
     "gulp-replace": "^1.1.4",
     "npm-check-updates": "^16.10.12"
