@@ -15,14 +15,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $plugin_version;
-$plugin_data    = get_file_data( __FILE__, array( 'version' => 'Version' ) );
-$plugin_version = $plugin_data['version'];
-
-load_plugin_textdomain( 'vk-legacy-notice', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-require_once plugin_dir_path( __FILE__ ) . 'inc/vk-admin/vk-admin-config.php';
-require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/vk-legacy-notice-config.php';
-
 /**
  * Composer autoload
  */
@@ -41,4 +33,16 @@ if ( class_exists( 'YahnisElsts\PluginUpdateChecker\v5\PucFactory' ) ) {
 		__FILE__,
 		'vk-legacy-notice'
 	);
+	$my_update_checker->getVcsApi()->enableReleaseAssets();
 }
+
+global $plugin_version;
+$plugin_data    = get_file_data( __FILE__, array( 'version' => 'Version' ) );
+$plugin_version = $plugin_data['version'];
+
+load_plugin_textdomain( 'vk-legacy-notice', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+require_once plugin_dir_path( __FILE__ ) . 'admin/admin.php';
+require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/config.php';
+
+
+

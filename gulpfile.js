@@ -4,20 +4,12 @@ const replace = require('gulp-replace')
 gulp.task('dist', function (done) {
 	const files = gulp.src(
 	  [
-		'./**/*.php',
-		'./**/*.txt',
-		'./**/*.css',
-		'./**/*.png',
-		'./assets/**',
+		'./admin/**',
 		'./inc/**',
 		'./languages/**',
-		"./vendor/**",
-		"!./.vscode/**",
-		"!./bin/**",
-		"!./dist/**",
-		"!./node_modules/**/*.*",
-		"!./tests/**",
-		"!./dist/**",
+		"./vendor/**",		
+		'./*.php',
+		'./*.txt',
 	  ], {
 		base: './'
 	  }

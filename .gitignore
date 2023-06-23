@@ -1,6 +1,5 @@
 node_modules/
 dist/
-vendor/*
-!vendor/composer/
-!vendor/yahnis-elsts/
-!vendor/autoload.php
+vendor/
+temp/
+.phpunit.result.cache
