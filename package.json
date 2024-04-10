@@ -8,6 +8,7 @@
     "wp-env": "wp-env",
     "build": "cd languages && wp i18n make-php . && cd ../",
     "dist": "composer install --no-dev && gulp dist && composer install",
+	"zip": "cd dist && zip -r vk-legacy-notice.zip vk-legacy-notice && cd ../",
     "phpunit": "composer install && wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/vk-legacy-notice/.phpunit.xml --testsuite default --verbose'"
   },
   "repository": {
