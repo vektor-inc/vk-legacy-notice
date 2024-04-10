@@ -6,7 +6,7 @@
   "scripts": {
     "update": "ncu -u -x '@wordpress/env' && rm -rf node_modules package-lock.json && npm install",
     "wp-env": "wp-env",
-    "build": "gulp replace_text_domain",
+    "build": "cd languages && wp i18n make-php . && cd ../",
     "dist": "composer install --no-dev && gulp dist && composer install",
     "phpunit": "composer install && wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/vk-legacy-notice/.phpunit.xml --testsuite default --verbose'"
   },
