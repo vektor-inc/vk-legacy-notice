@@ -3,7 +3,7 @@
  * Plugin Name: VK Legacy Notice
  * Plugin URI: https://lightning.nagoya/
  * Description: This plugin notices legacy functions.
- * Version: 0.1.1
+ * Version: 0.2.0
  * Author:  Vektor,Inc.
  * Author URI: https://lightning.nagoya/
  * Text Domain: vk-legacy-notice
@@ -43,6 +43,3 @@ $plugin_version = $plugin_data['version'];
 load_plugin_textdomain( 'vk-legacy-notice', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 require_once plugin_dir_path( __FILE__ ) . 'admin/admin.php';
 require_once plugin_dir_path( __FILE__ ) . 'inc/vk-legacy-notice/config.php';
-
-
-
