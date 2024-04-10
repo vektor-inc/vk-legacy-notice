@@ -299,16 +299,12 @@ class VK_Legacy_Notice {
 
 			// Old option check.
 
-			if ( ! function_exists( 'lightning_is_g3' ) && ( function_exists( 'lightning_is_g3' ) && ! lightning_is_g3() ) ) {
+			if ( ! function_exists( 'lightning_is_g3' ) || ( function_exists( 'lightning_is_g3' ) && ! lightning_is_g3() ) ) {
 
 				$options = get_option( 'lightning_theme_options' );
 
 				$widget_front_pr_alternative  = '<li>';
-				$widget_front_pr_alternative .= __( 'トップページに指定した固定ページ内に下記のいずれかを設置してください。', 'vk-legacy-notice' );
-				$widget_front_pr_alternative .= '<ul>';
-				$widget_front_pr_alternative .= '<li>' . __( 'VK Blocks Pro のアイコンカードブロック', 'vk-legacy-notice' ) . '</li>';
-				$widget_front_pr_alternative .= '<li>' . __( 'VK Blocks の PR Blocks ブロック', 'vk-legacy-notice' ) . '</li>';
-				$widget_front_pr_alternative .= '</ul>';
+				$widget_front_pr_alternative .= __( 'トップページに指定した固定ページ内に VK Blocks Pro のグリッドカラムカードブロックとアイコンブロックを使うと再現可能です。', 'vk-legacy-notice' );
 				$widget_front_pr_alternative .= '</li>';
 
 				$widget_full_wide_title_alternative  = '<li>';
@@ -322,7 +318,7 @@ class VK_Legacy_Notice {
 				$widget_full_wide_title_alternative .= __( 'その中に VK Blocks の見出しブロックを配置してください。', 'vk-legacy-notice' );
 				$widget_full_wide_title_alternative .= '</li>';
 
-				$customize_panel = __( '外観 ＞ カスタマイズ > Lightning 機能設定', 'vk-legacy-notice' );
+				$customize_panel = __( '外観 > カスタマイズ > Lightning 機能設定', 'vk-legacy-notice' );
 
 				$check_options = array(
 					'widget_front_pr'        => array(
@@ -333,7 +329,7 @@ class VK_Legacy_Notice {
 					),
 					'widget_full_wide_title' => array(
 						'label'       => __( 'Full Wide Title Widget', 'vk-legacy-notice' ),
-						'option'      => 'widget_front_pr',
+						'option'      => 'widget_full_wide_title',
 						'alternative' => $widget_full_wide_title_alternative,
 						'panel'       => $customize_panel,
 					),
@@ -430,8 +426,8 @@ class VK_Legacy_Notice {
 				$legacy_description .= '<h5>' . __( '対応方法', 'vk-legacy-notice' ) . '</h5>';
 				$legacy_description .= '<ol>';
 				// translators: Theme Prefix.
-				$legacy_description .= '<li>' . __( '固定ページ内に ブロックパターンの「カラム」カテゴリにある「PR カラム」パターンか VK Blocks Pro の「カード」ブロックを使用する事で同様の表示が可能です。', 'vk-legacy-notice' ) . '</li>';
-				$legacy_description .= '<li>' . __( 'その後、ExUnit > ExUnit から VK 3PR エリア ウィジェットを無効化してください。 ', 'vk-legacy-notice' ) . '</li>';
+				$legacy_description .= '<li>' . __( '固定ページ内に VK Block Patterns に搭載されたブロックパターンの「カラム」カテゴリにある「PR カラム」パターンを使用する事で同様の表示が可能です。', 'vk-legacy-notice' ) . '</li>';
+				$legacy_description .= '<li>' . __( 'その後、ExUnit > 有効化設定 から VK 3PR エリア ウィジェットを無効化してください。 ', 'vk-legacy-notice' ) . '</li>';
 				$legacy_description .= '</ol>';
 				$legacy_description .= '</div>';
 
