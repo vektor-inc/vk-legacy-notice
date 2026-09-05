@@ -26,7 +26,7 @@ jobs:
                     MYSQL_USER: wordpress
                     MYSQL_PASSWORD: wordpress
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v7
             - name: Read .node-version
               run: echo "{NODEVERSION}={$(cat .node-version)}" >> $GITHUB_OUTPUT
               id: nodenv
@@ -68,7 +68,7 @@ jobs:
         runs-on: ubuntu-latest
         needs: [php_unit]
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v7
             - name: Read .node-version
               run: echo "{NODEVERSION}={$(cat .node-version)}" >> $GITHUB_OUTPUT
               id: nodenv
