@@ -21,7 +21,7 @@ jobs:
     if: github.event.pull_request.user.login == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
 
       # Node のバージョン指定は php-unit-test.yml の手順をそのまま流用している
       - name: Read .node-version
