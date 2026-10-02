@@ -1,7 +1,7 @@
 {
     "require": {
         "yahnis-elsts/plugin-update-checker": "^5.0",
-        "vektor-inc/vk-admin": "^0.3.3"
+        "vektor-inc/vk-admin": "^0.8.1"
     },
     "require-dev": {
 		"doctrine/instantiator": "1.5.0",
