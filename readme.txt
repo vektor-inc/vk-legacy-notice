@@ -17,6 +17,8 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+* [ 開発環境 ] 開発・CI の Node.js を 24.22.1 に統一
+
 
 
 == Upgrade Notice ==
